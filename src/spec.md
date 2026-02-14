@@ -1,10 +1,10 @@
 # Specification
 
 ## Summary
-**Goal:** Fix the Valentine letter scene to use a handwritten-style font and update the scratch-off revealed couple illustration to match the provided couple description.
+**Goal:** Replace the scratch-off revealed couple selfie illustration so it matches the specified couple details and ensure the app reliably displays the updated image (not a cached/old version).
 
 **Planned changes:**
-- Update the scratch-off revealed image to use the local static asset path for `couple-illustration.dim_1400x1000.png` via `frontend/src/components/valentine/assets.ts`, ensuring the displayed revealed image matches the specified couple details and the scratch interaction remains functional.
-- Change the letter body text styling to a clearly handwritten/script-style font while keeping the letter content string exactly unchanged in `frontend/src/components/valentine/LetterContent.ts`.
+- Add a new comic-like couple selfie illustration image (v2) under `frontend/public/assets/generated` with the requested appearance, outfits, pose, and warm romantic/candlelit lighting.
+- Update `frontend/src/components/valentine/assets.ts` so `ScratchFrameScene` references the new illustration filename and loads it from the local static asset path to avoid showing an old/cached image.
 
-**User-visible outcome:** Opening the letter shows the same message in a handwritten-style font, and scratching off the frame reveals an updated couple illustration that matches the described Punjabi couple, without breaking layout or scratch functionality on desktop or mobile.
+**User-visible outcome:** The scratch-off reveal shows the updated couple selfie illustration (matching the couple details) consistently on both normal refresh and hard refresh.

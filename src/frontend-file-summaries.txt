@@ -5,7 +5,7 @@
   "frontend/src/components/valentine/ScratchFrameScene.tsx": "Gold-framed scratch-off scene with canvas-based drag-to-reveal interaction displaying the updated comic-style couple illustration, featuring black text for instructions and completion messages with locked state until previous section completes.",
   "frontend/src/components/valentine/LoadingOverlay.tsx": "Loading screen with progress bar styled in bright playful Valentine's theme shown while assets preload, featuring black text for better contrast and readability.",
   "frontend/src/components/valentine/LetterContent.ts": "Centralized exact letter message text with preserved formatting, line breaks, and emojis.",
-  "frontend/src/components/valentine/assets.ts": "Centralized asset path constants for all generated images, textures, and audio files.",
+  "frontend/src/components/valentine/assets.ts": "Centralized asset path constants for all generated images, textures, and audio files, now referencing the updated v2 couple illustration.",
   "frontend/src/hooks/useAmbientAudio.ts": "Hook managing ambient romantic instrumental audio lifecycle with browser-compliant playback starting on first user interaction.",
   "frontend/src/hooks/useAssetPreloader.ts": "Hook that preloads all required images and audio with progress tracking before enabling interactions.",
   "frontend/src/hooks/useScratchOffCanvas.ts": "Reusable hook for canvas-based scratch-off behavior with pointer/touch drag support and percentage tracking.",

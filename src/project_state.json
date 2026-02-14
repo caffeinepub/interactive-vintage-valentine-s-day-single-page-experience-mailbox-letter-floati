@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 11,
+  "projectStateVersion": 13,
   "summary": "Shift the experience direction from moody vintage to a fun, more playful Valentine’s Day single-page interactive experience while fixing major usability blockers (scroll not working; letter not readable; inability to scroll after letter).",
   "architectural_notes": [
     "Single-page interactive, section-by-section narrative flow gated by user interactions (click/scroll/drag) to ensure no passive sections.",
@@ -16,13 +16,13 @@
     "User rejects current 'vintage' vibe; requested a fun/playful vibe instead.",
     "Ticket section text is barely readable due to low-contrast font color (needs darker text).",
     "Ticket currently includes unwanted line “Front row seats to forever with you.” (remove).",
-    "Revealed scratch-off selfie illustration does not match the requested couple appearance/style (needs updated comic-like Punjabi mid-20s selfie matching specified details).",
     "Scratch-off section revealed couple illustration still does not match the specified couple details / comic-like Punjabi mid-20s selfie; user confirms everything else is good but this image must be replaced.",
     "Some UI text is still using pink font color; user requests changing it to black for readability.",
-    "Scratch-off revealed couple illustration was not updated in the latest draft (still does not match the specified couple description)."
+    "Scratch-off revealed couple illustration was not updated in the latest draft (still does not match the specified couple description).",
+    "Latest deployed version still shows the old scratch-off revealed selfie; the requested updated couple illustration was not applied/changed."
   ],
   "isFixRequest": true,
-  "imageRequirements": "## Edit Images\n- Update the revealed couple selfie illustration to match the specified couple description in a comic-like style with warm romantic lighting (couple-illustration.dim_1400x1000.png > couple-illustration.dim_1400x1000.png)",
+  "imageRequirements": "## Required Images\n- Comic-like romantic couple selfie on a sofa, warm candlelit glow, Punjabi mid‑20s couple; she long black hair (no bangs), brown eyes, red off‑shoulder full‑sleeve top, smiling with teeth; he dark blue sweater, red Sikh turban (dastaar), shorter/small beard, smiling without showing teeth; he holding her in his arms (couple-illustration-v2.dim_1400x1000.png)\n\n## Edit Images\n- Update the couple selfie illustration so it matches the specified couple details and is visibly different from the current image (couple-illustration.dim_1400x1000.png > couple-illustration-v2.dim_1400x1000.png)",
   "existing_features": [
     {
       "id": "feature-create-a-single-page-fully-interactive-valentine-s-day-experience-with-a-consistent-moody-vintage-romantic-aesthetic-warm-golden-tones-soft-shadows-old-paper-textures-subtle-flickering-candlelight-animations-and-slow-emotional-transitions-the-overall-vibe-must-also-feel-fun-cute-and-aesthetic-while-staying-vintage",
@@ -157,6 +157,22 @@
       "title": "Change the letter text styling in the opening mailbox/letter section to use a handwritten-style font (not the current playful sans font) while preserving the exact letter content string (including line breaks and emojis) from frontend/src/components/valentine/LetterContent.ts.",
       "reqIds": [
         "REQ-17"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-replace-the-scratch-off-revealed-couple-illustration-with-a-new-comic-like-selfie-illustration-that-matches-the-specified-couple-details-punjabi-light-brown-lighter-skin-tones-mid-20s-sitting-on-a-sofa-selfie-pose-she-has-long-black-hair-with-no-bangs-brown-eyes-red-off-shoulder-full-sleeve-top-smiling-with-teeth-he-has-a-shorter-small-beard-dark-blue-sweater-red-sikh-turban-dastaar-smiling-without-showing-teeth-he-is-holding-her-in-his-arms-with-warm-romantic-candlelit-lighting",
+      "title": "Replace the scratch-off revealed couple illustration with a new comic-like selfie illustration that matches the specified couple details (Punjabi, light-brown/lighter skin tones, mid‑20s; sitting on a sofa; selfie pose; she has long black hair with no bangs, brown eyes, red off‑shoulder full‑sleeve top, smiling with teeth; he has a shorter/small beard, dark blue sweater, red Sikh turban/dastaar, smiling without showing teeth; he is holding her in his arms), with warm romantic/candlelit lighting.",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-scratch-off-scene-displays-the-newly-replaced-couple-illustration-and-not-a-cached-previous-version-by-updating-the-valentine-asset-reference-used-by-scratchframescene-via-frontend-src-components-valentine-assets-ts-to-point-to-the-new-generated-filename",
+      "title": "Ensure the scratch-off scene displays the newly replaced couple illustration (and not a cached/previous version) by updating the Valentine asset reference used by ScratchFrameScene (via frontend/src/components/valentine/assets.ts) to point to the new generated filename.",
+      "reqIds": [
+        "REQ-19"
       ],
       "version": 1
     }

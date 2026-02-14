@@ -1,59 +1,60 @@
 {
   "kind": "build_request",
-  "title": "Fix letter handwritten font and update scratch-off couple illustration to match provided description",
-  "priority": "high",
+  "title": "Replace the scratch-off couple selfie illustration so it matches the couple and is actually updated in the app",
+  "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-16",
-      "text": "Update the scratch-off section to display an updated revealed couple illustration that matches the user-provided couple description (Punjabi, lighter/light-brown skin tones, mid-20s; sitting on a sofa; selfie pose; she has long black hair with no bangs, brown eyes, red off-shoulder full sleeve top, smiling with teeth; he has a shorter/small beard, dark blue sweater, red Sikh turban/dastaar, smiling without showing teeth; he is holding her in his arms). Ensure the ScratchFrameScene uses the updated local static asset path for the revealed image.",
+      "id": "REQ-18",
+      "text": "Replace the scratch-off revealed couple illustration with a new comic-like selfie illustration that matches the specified couple details (Punjabi, light-brown/lighter skin tones, mid‑20s; sitting on a sofa; selfie pose; she has long black hair with no bangs, brown eyes, red off‑shoulder full‑sleeve top, smiling with teeth; he has a shorter/small beard, dark blue sweater, red Sikh turban/dastaar, smiling without showing teeth; he is holding her in his arms), with warm romantic/candlelit lighting.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "recent-messages-3"
+          "msg-4"
         ],
         "quotes": [
-          "again, you didnt even change the last picture and didnt match the description i told you..."
+          "the selfie again doesnt look like us you didnt change"
         ]
       },
       "acceptanceCriteria": [
-        "The revealed image shown in the scratch-off frame is sourced from frontend/public/assets/generated/couple-illustration.dim_1400x1000.png (via frontend/src/components/valentine/assets.ts) and visibly differs from the previous incorrect image.",
-        "The revealed image matches all specified character details: skin tone, outfits (dark blue sweater, red dastaar; red off-shoulder top), hair/eyes (long black hair no bangs; brown eyes), expressions (her teeth showing; his teeth not showing), pose (selfie on sofa; he holding her).",
-        "The scratch-off interaction remains functional on desktop (mouse) and mobile (touch), and revealing the image does not break layout or cause runtime errors."
+        "A new static image exists under frontend/public/assets/generated with the agreed filename and dimensions.",
+        "The illustration clearly reflects all requested appearance/outfit/pose details (hair/no bangs, turban color, sweater color, smiles, sofa selfie composition, arms holding pose).",
+        "The illustration style is comic-like (slightly illustrated but still recognizable) with warm romantic lighting."
       ]
     },
     {
-      "id": "REQ-17",
-      "text": "Change the letter text styling in the opening mailbox/letter section to use a handwritten-style font (not the current playful sans font) while preserving the exact letter content string (including line breaks and emojis) from frontend/src/components/valentine/LetterContent.ts.",
+      "id": "REQ-19",
+      "text": "Ensure the scratch-off scene displays the newly replaced couple illustration (and not a cached/previous version) by updating the Valentine asset reference used by ScratchFrameScene (via frontend/src/components/valentine/assets.ts) to point to the new generated filename.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "recent-messages-3"
+          "msg-4"
         ],
         "quotes": [
-          "...also didnt change the font in the letter"
+          "the selfie again doesnt look like us you didnt change"
         ]
       },
       "acceptanceCriteria": [
-        "When the letter is opened, the letter body text is rendered in a clearly handwritten/script style font (e.g., the existing script font utility), not the current font-playful styling.",
-        "The letter content text is unchanged from frontend/src/components/valentine/LetterContent.ts (same spelling, punctuation, line breaks, and emojis).",
-        "The letter remains readable across common mobile and desktop widths (no clipped text; scroll within the letter container still works)."
+        "frontend/src/components/valentine/assets.ts references the new couple illustration filename (not the previous one).",
+        "ScratchFrameScene renders the updated illustration from the new local static asset path.",
+        "Hard refresh and normal refresh both show the updated illustration reliably (no old image persists due to caching)."
       ]
     }
   ],
   "constraints": [
-    "Do not edit files under frontend/src/components/ui (read-only).",
-    "Do not edit immutable hook files listed in SYSTEM_CONTEXT.frontend.immutablePaths.",
-    "Do not fetch images through the backend; all Valentine images must be served as static assets from frontend/public/assets/generated and referenced via frontend/src/components/valentine/assets.ts."
+    "Do not fetch images through the backend; use local static assets under frontend/public/assets/generated.",
+    "Do not edit any files under frontend/immutablePaths (e.g., frontend/src/hooks/useInternetIdentity.ts(x), frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui).",
+    "Backend must remain a single Motoko actor; do not add additional backend services."
   ],
   "nonGoals": [
-    "Add new interactive sections or change the existing scene progression structure beyond what is necessary to fix the image and letter font issues.",
-    "Change the wording of the letter message.",
-    "Introduce any backend logic; backend/main.mo should remain unused unless explicitly required later."
+    "Do not change the letter text content in frontend/src/components/valentine/LetterContent.ts.",
+    "Do not redesign the mailbox or movie ticket interactions beyond what is required to confirm the updated selfie image is shown."
   ],
   "imageRequirements": {
-    "required": [],
+    "required": [
+      "Comic-like romantic couple selfie on a sofa, warm candlelit glow, Punjabi mid‑20s couple; she long black hair (no bangs), brown eyes, red off‑shoulder full‑sleeve top, smiling with teeth; he dark blue sweater, red Sikh turban (dastaar), shorter/small beard, smiling without showing teeth; he holding her in his arms (couple-illustration-v2.dim_1400x1000.png)"
+    ],
     "edits": [
-      "Update the revealed couple selfie illustration to match the specified couple description in a comic-like style with warm romantic lighting (couple-illustration.dim_1400x1000.png > couple-illustration.dim_1400x1000.png)"
+      "Update the couple selfie illustration so it matches the specified couple details and is visibly different from the current image (couple-illustration.dim_1400x1000.png > couple-illustration-v2.dim_1400x1000.png)"
     ]
   },
   "userProfileUpdate": {

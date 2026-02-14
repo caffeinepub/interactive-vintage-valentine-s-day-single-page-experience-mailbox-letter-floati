@@ -1,47 +1,37 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Valentine scene fixes: updated couple reveal illustration + handwritten letter font",
+  "title": "Update scratch-off couple illustration asset and wire it into the Valentine scratch scene",
   "requirements": [
     {
-      "id": "REQ-16",
-      "summary": "Replace the scratch-off revealed couple illustration with the updated static asset and ensure ScratchFrameScene sources it from the local generated asset via assets.ts while keeping scratch interaction intact.",
+      "id": "REQ-18",
+      "summary": "Add the new comic-like candlelit couple selfie illustration as a local static generated asset with the agreed filename and dimensions.",
       "acceptanceCriteria": [
-        "The revealed image shown in the scratch-off frame is sourced from frontend/public/assets/generated/couple-illustration.dim_1400x1000.png (via frontend/src/components/valentine/assets.ts) and visibly differs from the previous incorrect image.",
-        "The revealed image matches all specified character details: skin tone, outfits (dark blue sweater, red dastaar; red off-shoulder top), hair/eyes (long black hair no bangs; brown eyes), expressions (her teeth showing; his teeth not showing), pose (selfie on sofa; he holding her).",
-        "The scratch-off interaction remains functional on desktop (mouse) and mobile (touch), and revealing the image does not break layout or cause runtime errors."
+        "A new static image exists under frontend/public/assets/generated with the agreed filename and dimensions.",
+        "The illustration clearly reflects all requested appearance/outfit/pose details (hair/no bangs, turban color, sweater color, smiles, sofa selfie composition, arms holding pose).",
+        "The illustration style is comic-like (slightly illustrated but still recognizable) with warm romantic lighting."
       ],
       "file_operations": [
         {
-          "path": "frontend/public/assets/generated/couple-illustration.dim_1400x1000.png",
-          "operation": "modify",
-          "description": "Replace the existing revealed couple illustration with the newly generated comic-like selfie-on-sofa couple image matching the provided Punjabi couple description; keep the exact same filename so it continues to be served as a static asset."
-        },
-        {
-          "path": "frontend/src/components/valentine/assets.ts",
-          "operation": "modify",
-          "description": "Confirm/retain ASSETS.coupleIllustration pointing to the static generated asset path for the revealed image (frontend/public/assets/generated/couple-illustration.dim_1400x1000.png), ensuring no backend fetching is introduced."
-        },
-        {
-          "path": "frontend/src/components/valentine/ScratchFrameScene.tsx",
-          "operation": "modify",
-          "description": "Ensure the revealed <img> continues to use ASSETS.coupleIllustration (from frontend/src/components/valentine/assets.ts) and that the scratch overlay/canvas layering and touch/mouse behavior remain unchanged to preserve scratch-off interaction and layout stability."
+          "path": "frontend/public/assets/generated/couple-illustration-v2.dim_1400x1000.png",
+          "operation": "create",
+          "description": "Add the new generated static image asset matching the specified Punjabi mid‑20s couple selfie details (sofa, selfie pose, her red off‑shoulder full‑sleeve top + long black hair no bangs + teeth smile; him dark blue sweater + red Sikh turban/dastaar + small beard + closed-mouth smile; warm romantic/candlelit lighting)."
         }
       ]
     },
     {
-      "id": "REQ-17",
-      "summary": "Switch the opened letter body typography to a handwritten/script font while keeping the exact letter content string unchanged and maintaining readability/scrolling.",
+      "id": "REQ-19",
+      "summary": "Update ScratchFrameScene’s Valentine asset reference to use the new couple illustration filename and ensure the updated image consistently appears (no stale cached version).",
       "acceptanceCriteria": [
-        "When the letter is opened, the letter body text is rendered in a clearly handwritten/script style font (e.g., the existing script font utility), not the current font-playful styling.",
-        "The letter content text is unchanged from frontend/src/components/valentine/LetterContent.ts (same spelling, punctuation, line breaks, and emojis).",
-        "The letter remains readable across common mobile and desktop widths (no clipped text; scroll within the letter container still works)."
+        "frontend/src/components/valentine/assets.ts references the new couple illustration filename (not the previous one).",
+        "ScratchFrameScene renders the updated illustration from the new local static asset path.",
+        "Hard refresh and normal refresh both show the updated illustration reliably (no old image persists due to caching)."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/valentine/OpeningMailboxScene.tsx",
+          "path": "frontend/src/components/valentine/assets.ts",
           "operation": "modify",
-          "description": "Update the letter body text container styling to use the existing handwritten/script font utility (e.g., switch from font-playful to font-script) while rendering the same LETTER_CONTENT string and preserving the existing scrollable letter container behavior (max height + overflow)."
+          "description": "Update ASSETS.coupleIllustration to reference the new local static asset filename at frontend/public/assets/generated/couple-illustration-v2.dim_1400x1000.png, replacing the previous couple-illustration.dim_1400x1000.png (filename change provides cache busting for normal and hard refresh)."
         }
       ]
     }

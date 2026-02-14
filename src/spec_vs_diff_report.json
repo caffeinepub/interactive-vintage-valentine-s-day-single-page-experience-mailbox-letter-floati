@@ -1,24 +1,48 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-14T01:05:40.708Z",
-  "summary": "REQ-17 (handwritten/script font for letter body while preserving LETTER_CONTENT) appears implemented in OpeningMailboxScene. REQ-16 (update scratch-off revealed couple illustration asset + ensure ScratchFrameScene uses the updated local static asset via assets.ts) is not evidenced by the provided diff content.",
+  "generatedAt": "2026-02-14T01:10:57.439Z",
+  "summary": "The diff updates the Valentine asset reference to point to a new v2 couple illustration filename, but does not include the new image asset itself and provides no direct evidence that ScratchFrameScene is wired to render the new asset beyond the constant change. Two unrelated metadata/summary files were also modified without being requested.",
   "missing_requirements": [
     {
-      "id": "REQ-16",
-      "requirement": "Update the scratch-off section to display an updated revealed couple illustration that matches the user-provided couple description, and ensure ScratchFrameScene uses the updated local static asset path for the revealed image (from frontend/public/assets/generated/couple-illustration.dim_1400x1000.png via frontend/src/components/valentine/assets.ts).",
-      "reason": "The diff does not show any changes to ScratchFrameScene.tsx, assets.ts, or the generated image asset path/reference. The only concrete code change shown is in OpeningMailboxScene.tsx, so there is no verifiable implementation evidence for updating the scratch-off revealed image or its asset wiring.",
+      "id": "REQ-18",
+      "requirement": "Add/replace the scratch-off revealed couple illustration with a new comic-like selfie image matching the specified couple details, saved as a new static asset under frontend/public/assets/generated with the agreed filename and dimensions.",
+      "reason": "No new image file was added in the diff (Added: 0), so there is no evidence the required new static asset actually exists under frontend/public/assets/generated.",
       "evidence": [
-        "frontend/src/components/valentine/OpeningMailboxScene.tsx (only code diff shown; no ScratchFrameScene/assets.ts changes included)",
-        "frontend-file-summaries.txt (mentions ScratchFrameScene updated, but does not provide code-level diff evidence)"
+        "File diff summary: \"Added: 0\"",
+        "frontend/src/components/valentine/assets.ts (references /assets/generated/couple-illustration-v2.dim_1400x1000.png but does not add the file)"
+      ]
+    },
+    {
+      "id": "REQ-19",
+      "requirement": "Ensure ScratchFrameScene displays the newly replaced couple illustration (not cached/previous) by updating the asset reference used by ScratchFrameScene (via frontend/src/components/valentine/assets.ts).",
+      "reason": "While assets.ts is updated to the new filename, the diff does not show any ScratchFrameScene change or usage proving it renders ASSETS.coupleIllustration from that path (beyond a narrative in a separate summary file).",
+      "evidence": [
+        "frontend/src/components/valentine/assets.ts",
+        "frontend-file-summaries.txt (mentions ScratchFrameScene displays updated illustration, but is not actual implementation code)"
       ]
     }
   ],
-  "hallucinated_features": [],
-  "confidence": 0.63,
+  "hallucinated_features": [
+    {
+      "description": "Updated project summary/state describing a broad shift to a fun/playful Valentine aesthetic and fixing usability blockers.",
+      "reason": "Not requested in the BuildRequest (which is narrowly about replacing the scratch-off couple illustration and updating the asset reference).",
+      "evidence": [
+        "project_state.json"
+      ]
+    },
+    {
+      "description": "Modified/updated documentation-like frontend file summaries describing multiple scene/theme/readability changes.",
+      "reason": "Not requested; BuildRequest only asks for the couple illustration asset replacement and reference update.",
+      "evidence": [
+        "frontend-file-summaries.txt"
+      ]
+    }
+  ],
+  "confidence": 0.74,
   "changed_files": [
     "frontend-file-summaries.txt",
-    "frontend/src/components/valentine/OpeningMailboxScene.tsx",
+    "frontend/src/components/valentine/assets.ts",
     "project_state.json"
   ]
 }
