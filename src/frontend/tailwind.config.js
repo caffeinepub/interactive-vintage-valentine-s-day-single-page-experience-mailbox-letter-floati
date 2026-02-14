@@ -76,6 +76,16 @@ export default {
         "float-slow": "float-slow 20s ease-in-out infinite",
         "float-medium": "float-medium 15s ease-in-out infinite",
         "float-fast": "float-fast 10s ease-in-out infinite",
+        "reveal-pop": "reveal-pop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards",
+        "sparkle-burst-1": "sparkle-burst-1 1.2s ease-out forwards",
+        "sparkle-burst-2": "sparkle-burst-2 1.3s ease-out forwards",
+        "sparkle-burst-3": "sparkle-burst-3 1.1s ease-out forwards",
+        "sparkle-burst-4": "sparkle-burst-4 1.4s ease-out forwards",
+        "sparkle-burst-5": "sparkle-burst-5 1.2s ease-out forwards",
+        "sparkle-burst-6": "sparkle-burst-6 1.3s ease-out forwards",
+        "sparkle-burst-7": "sparkle-burst-7 1.1s ease-out forwards",
+        "sparkle-burst-8": "sparkle-burst-8 1.4s ease-out forwards",
+        "sparkle-burst-center": "sparkle-burst-center 1s ease-out forwards",
       },
       keyframes: {
         "gentle-float": {
@@ -159,6 +169,135 @@ export default {
           },
           "66%": {
             transform: "translate(-30px, -20px) rotate(-4deg)",
+          },
+        },
+        "reveal-pop": {
+          "0%": {
+            transform: "scale(1)",
+          },
+          "50%": {
+            transform: "scale(1.1) rotate(2deg)",
+          },
+          "100%": {
+            transform: "scale(1) rotate(0deg)",
+          },
+        },
+        "sparkle-burst-1": {
+          "0%": {
+            opacity: "0",
+            transform: "translate(0, 0) scale(0) rotate(0deg)",
+          },
+          "50%": {
+            opacity: "1",
+          },
+          "100%": {
+            opacity: "0",
+            transform: "translate(-60px, -60px) scale(1.5) rotate(-180deg)",
+          },
+        },
+        "sparkle-burst-2": {
+          "0%": {
+            opacity: "0",
+            transform: "translate(0, 0) scale(0) rotate(0deg)",
+          },
+          "50%": {
+            opacity: "1",
+          },
+          "100%": {
+            opacity: "0",
+            transform: "translate(70px, -50px) scale(1.5) rotate(180deg)",
+          },
+        },
+        "sparkle-burst-3": {
+          "0%": {
+            opacity: "0",
+            transform: "translate(0, 0) scale(0) rotate(0deg)",
+          },
+          "50%": {
+            opacity: "1",
+          },
+          "100%": {
+            opacity: "0",
+            transform: "translate(-50px, 70px) scale(1.5) rotate(-180deg)",
+          },
+        },
+        "sparkle-burst-4": {
+          "0%": {
+            opacity: "0",
+            transform: "translate(0, 0) scale(0) rotate(0deg)",
+          },
+          "50%": {
+            opacity: "1",
+          },
+          "100%": {
+            opacity: "0",
+            transform: "translate(60px, 60px) scale(1.5) rotate(180deg)",
+          },
+        },
+        "sparkle-burst-5": {
+          "0%": {
+            opacity: "0",
+            transform: "translate(0, 0) scale(0) rotate(0deg)",
+          },
+          "50%": {
+            opacity: "1",
+          },
+          "100%": {
+            opacity: "0",
+            transform: "translate(0, -80px) scale(1.3) rotate(360deg)",
+          },
+        },
+        "sparkle-burst-6": {
+          "0%": {
+            opacity: "0",
+            transform: "translate(0, 0) scale(0) rotate(0deg)",
+          },
+          "50%": {
+            opacity: "1",
+          },
+          "100%": {
+            opacity: "0",
+            transform: "translate(0, 80px) scale(1.3) rotate(-360deg)",
+          },
+        },
+        "sparkle-burst-7": {
+          "0%": {
+            opacity: "0",
+            transform: "translate(0, 0) scale(0) rotate(0deg)",
+          },
+          "50%": {
+            opacity: "1",
+          },
+          "100%": {
+            opacity: "0",
+            transform: "translate(-80px, 0) scale(1.3) rotate(360deg)",
+          },
+        },
+        "sparkle-burst-8": {
+          "0%": {
+            opacity: "0",
+            transform: "translate(0, 0) scale(0) rotate(0deg)",
+          },
+          "50%": {
+            opacity: "1",
+          },
+          "100%": {
+            opacity: "0",
+            transform: "translate(80px, 0) scale(1.3) rotate(-360deg)",
+          },
+        },
+        "sparkle-burst-center": {
+          "0%": {
+            opacity: "0",
+            transform: "translate(-50%, -50%) scale(0) rotate(0deg)",
+          },
+          "30%": {
+            opacity: "1",
+            transform: "translate(-50%, -50%) scale(2) rotate(180deg)",
+          },
+          "100%": {
+            opacity: "0",
+            transform: "translate(-50%, -50%) scale(3) rotate(360deg)",
           },
         },
       },

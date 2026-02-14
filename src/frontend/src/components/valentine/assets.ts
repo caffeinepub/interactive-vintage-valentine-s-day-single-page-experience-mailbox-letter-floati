@@ -5,7 +5,7 @@ export const ASSETS = {
   movieTicket: '/assets/generated/movie-ticket.dim_1000x500.png',
   goldFrame: '/assets/generated/gold-frame.dim_1400x1000.png',
   scratchOverlay: '/assets/generated/scratch-overlay.dim_1400x1000.png',
-  coupleIllustration: '/assets/generated/couple-illustration-v2.dim_1400x1000.png',
+  coupleIllustration: '/assets/generated/couple-illustration-v5.dim_1400x1000.png',
   paperTexture: '/assets/generated/paper-texture-tile.dim_512x512.png',
   audio: '/assets/audio/romantic-instrumental.mp3',
 };

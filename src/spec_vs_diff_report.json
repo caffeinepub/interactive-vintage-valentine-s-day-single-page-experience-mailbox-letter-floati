@@ -1,48 +1,27 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-14T01:10:57.439Z",
-  "summary": "The diff updates the Valentine asset reference to point to a new v2 couple illustration filename, but does not include the new image asset itself and provides no direct evidence that ScratchFrameScene is wired to render the new asset beyond the constant change. Two unrelated metadata/summary files were also modified without being requested.",
+  "generatedAt": "2026-02-14T01:58:44.723Z",
+  "summary": "REQ-26 (site-wide looping background music with mute/unmute and safe autoplay handling) appears implemented via a new app-level ambient audio hook and a fixed UI control. REQ-27 is partially implemented: the asset reference is updated to a new v5 filename, but the diff summary does not show the newly generated/revised illustration image file being added under the required public assets path.",
   "missing_requirements": [
     {
-      "id": "REQ-18",
-      "requirement": "Add/replace the scratch-off revealed couple illustration with a new comic-like selfie image matching the specified couple details, saved as a new static asset under frontend/public/assets/generated with the agreed filename and dimensions.",
-      "reason": "No new image file was added in the diff (Added: 0), so there is no evidence the required new static asset actually exists under frontend/public/assets/generated.",
+      "id": "REQ-27",
+      "requirement": "A newly generated/revised couple illustration image exists with the center golden turban element removed and the turban rendered as plain dark red (new filename), stored as a local static asset.",
+      "reason": "The code now references `/assets/generated/couple-illustration-v5.dim_1400x1000.png`, but the diff summary does not include adding this image file under `frontend/public/assets/generated`, so it is not evidenced as present.",
       "evidence": [
-        "File diff summary: \"Added: 0\"",
-        "frontend/src/components/valentine/assets.ts (references /assets/generated/couple-illustration-v2.dim_1400x1000.png but does not add the file)"
-      ]
-    },
-    {
-      "id": "REQ-19",
-      "requirement": "Ensure ScratchFrameScene displays the newly replaced couple illustration (not cached/previous) by updating the asset reference used by ScratchFrameScene (via frontend/src/components/valentine/assets.ts).",
-      "reason": "While assets.ts is updated to the new filename, the diff does not show any ScratchFrameScene change or usage proving it renders ASSETS.coupleIllustration from that path (beyond a narrative in a separate summary file).",
-      "evidence": [
-        "frontend/src/components/valentine/assets.ts",
-        "frontend-file-summaries.txt (mentions ScratchFrameScene displays updated illustration, but is not actual implementation code)"
+        "frontend/src/components/valentine/assets.ts"
       ]
     }
   ],
-  "hallucinated_features": [
-    {
-      "description": "Updated project summary/state describing a broad shift to a fun/playful Valentine aesthetic and fixing usability blockers.",
-      "reason": "Not requested in the BuildRequest (which is narrowly about replacing the scratch-off couple illustration and updating the asset reference).",
-      "evidence": [
-        "project_state.json"
-      ]
-    },
-    {
-      "description": "Modified/updated documentation-like frontend file summaries describing multiple scene/theme/readability changes.",
-      "reason": "Not requested; BuildRequest only asks for the couple illustration asset replacement and reference update.",
-      "evidence": [
-        "frontend-file-summaries.txt"
-      ]
-    }
-  ],
+  "hallucinated_features": [],
   "confidence": 0.74,
   "changed_files": [
     "frontend-file-summaries.txt",
+    "frontend/src/App.tsx",
+    "frontend/src/components/valentine/BackgroundMusicControl.tsx",
+    "frontend/src/components/valentine/OpeningMailboxScene.tsx",
     "frontend/src/components/valentine/assets.ts",
+    "frontend/src/hooks/useAmbientAudio.ts",
     "project_state.json"
   ]
 }

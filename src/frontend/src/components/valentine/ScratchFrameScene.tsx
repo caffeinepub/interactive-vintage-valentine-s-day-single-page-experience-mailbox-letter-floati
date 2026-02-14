@@ -9,6 +9,7 @@ interface ScratchFrameSceneProps {
 export function ScratchFrameScene({ isUnlocked }: ScratchFrameSceneProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [revealed, setRevealed] = useState(false);
+  const [showSparkles, setShowSparkles] = useState(false);
   
   const { canvasRef, scratchPercentage } = useScratchOffCanvas({
     overlayImage: ASSETS.scratchOverlay,
@@ -18,6 +19,9 @@ export function ScratchFrameScene({ isUnlocked }: ScratchFrameSceneProps) {
   useEffect(() => {
     if (scratchPercentage > 60 && !revealed) {
       setRevealed(true);
+      setShowSparkles(true);
+      // Hide sparkles after animation completes
+      setTimeout(() => setShowSparkles(false), 1500);
     }
   }, [scratchPercentage, revealed]);
 
@@ -44,7 +48,7 @@ export function ScratchFrameScene({ isUnlocked }: ScratchFrameSceneProps) {
 
       {/* Frame with scratch-off */}
       {isUnlocked && (
-        <div className="relative z-10 max-w-[90vw] max-h-[80vh]">
+        <div className={`relative z-10 max-w-[90vw] max-h-[80vh] ${revealed ? 'animate-reveal-pop' : ''}`}>
           {/* Gold frame */}
           <div className="relative bg-gradient-to-br from-fun-gold via-fun-gold-light to-fun-gold rounded-3xl p-4 shadow-fun-xl">
             <div className="bg-white rounded-2xl p-2">
@@ -63,6 +67,21 @@ export function ScratchFrameScene({ isUnlocked }: ScratchFrameSceneProps) {
                   className="absolute inset-0 w-full h-full cursor-pointer touch-none"
                   style={{ touchAction: 'none' }}
                 />
+
+                {/* Sparkle burst overlay */}
+                {showSparkles && (
+                  <div className="absolute inset-0 pointer-events-none">
+                    <div className="absolute top-1/4 left-1/4 text-4xl animate-sparkle-burst-1">✨</div>
+                    <div className="absolute top-1/3 right-1/4 text-5xl animate-sparkle-burst-2">💫</div>
+                    <div className="absolute bottom-1/3 left-1/3 text-4xl animate-sparkle-burst-3">⭐</div>
+                    <div className="absolute bottom-1/4 right-1/3 text-5xl animate-sparkle-burst-4">🌟</div>
+                    <div className="absolute top-1/2 left-1/2 text-6xl animate-sparkle-burst-center">💖</div>
+                    <div className="absolute top-1/5 left-1/2 text-3xl animate-sparkle-burst-5">✨</div>
+                    <div className="absolute bottom-1/5 left-1/2 text-3xl animate-sparkle-burst-6">💫</div>
+                    <div className="absolute top-1/2 left-1/5 text-3xl animate-sparkle-burst-7">⭐</div>
+                    <div className="absolute top-1/2 right-1/5 text-3xl animate-sparkle-burst-8">🌟</div>
+                  </div>
+                )}
               </div>
             </div>
           </div>

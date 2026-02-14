@@ -2,9 +2,14 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-replace-the-scratch-off-revealed-couple-illustration-with-a-new-comic-like-selfie-illustration-that-matches-the-specified-couple-details-punjabi-light-brown-lighter-skin-tones-mid-20s-sitting-on-a-sofa-selfie-pose-she-has-long-black-hair-with-no-bangs-brown-eyes-red-off-shoulder-full-sleeve-top-smiling-with-teeth-he-has-a-shorter-small-beard-dark-blue-sweater-red-sikh-turban-dastaar-smiling-without-showing-teeth-he-is-holding-her-in-his-arms-with-warm-romantic-candlelit-lighting",
-      "featureTitle": "Replace the scratch-off revealed couple illustration with a new comic-like selfie illustration that matches the specified couple details (Punjabi, light-brown/lighter skin tones, mid‑20s; sitting on a sofa; selfie pose; she has long black hair with no bangs, brown eyes, red off‑shoulder full‑sleeve top, smiling with teeth; he has a shorter/small beard, dark blue sweater, red Sikh turban/dastaar, smiling without showing teeth; he is holding her in his arms), with warm romantic/candlelit lighting.",
-      "files": [],
+      "featureId": "feature-ensure-a-background-song-plays-across-the-entire-valentine-single-page-experience-not-just-within-the-mailbox-scene-looping-continuously-and-working-on-both-desktop-and-mobile-within-browser-autoplay-restrictions",
+      "featureTitle": "Ensure a background song plays across the entire Valentine single-page experience (not just within the mailbox scene), looping continuously and working on both desktop and mobile within browser autoplay restrictions.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/valentine/BackgroundMusicControl.tsx",
+        "frontend/src/components/valentine/OpeningMailboxScene.tsx",
+        "frontend/src/hooks/useAmbientAudio.ts"
+      ],
       "components": [
         "core-infrastructure@1.0.2",
         "shadcn-ui@1.0.0",
@@ -13,13 +18,13 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-18"
+        "REQ-26"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-ensure-the-scratch-off-scene-displays-the-newly-replaced-couple-illustration-and-not-a-cached-previous-version-by-updating-the-valentine-asset-reference-used-by-scratchframescene-via-frontend-src-components-valentine-assets-ts-to-point-to-the-new-generated-filename",
-      "featureTitle": "Ensure the scratch-off scene displays the newly replaced couple illustration (and not a cached/previous version) by updating the Valentine asset reference used by ScratchFrameScene (via frontend/src/components/valentine/assets.ts) to point to the new generated filename.",
+      "featureId": "feature-update-the-scratch-off-revealed-couple-illustration-so-the-guy-s-turban-is-plain-dark-red-with-no-golden-element-in-the-center-while-keeping-the-rest-of-the-illustration-the-same-and-update-the-app-to-reference-the-new-image-filename-to-avoid-caching-old-versions",
+      "featureTitle": "Update the scratch-off revealed couple illustration so the guy’s turban is plain dark red with no golden element in the center, while keeping the rest of the illustration the same, and update the app to reference the new image filename to avoid caching old versions.",
       "files": [
         "frontend/src/components/valentine/assets.ts"
       ],
@@ -31,7 +36,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-19"
+        "REQ-27"
       ],
       "confidence": "high"
     }

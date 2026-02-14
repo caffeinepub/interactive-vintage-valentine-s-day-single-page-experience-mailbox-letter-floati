@@ -1,18 +1,46 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { OpeningMailboxScene } from './components/valentine/OpeningMailboxScene';
 import { MovieTicketScene } from './components/valentine/MovieTicketScene';
 import { ScratchFrameScene } from './components/valentine/ScratchFrameScene';
 import { LoadingOverlay } from './components/valentine/LoadingOverlay';
+import { BackgroundMusicControl } from './components/valentine/BackgroundMusicControl';
 import { useAssetPreloader } from './hooks/useAssetPreloader';
+import { useAmbientAudio } from './hooks/useAmbientAudio';
 
 export default function App() {
   const [mailboxComplete, setMailboxComplete] = useState(false);
   const [ticketComplete, setTicketComplete] = useState(false);
   const { isLoading, progress } = useAssetPreloader();
+  const { startAudio, toggleMute, isMuted, isReady } = useAmbientAudio();
+  const hasAttemptedStartRef = useRef(false);
 
   const mailboxRef = useRef<HTMLDivElement>(null);
   const ticketRef = useRef<HTMLDivElement>(null);
   const frameRef = useRef<HTMLDivElement>(null);
+
+  // Attempt to start audio on first user gesture
+  useEffect(() => {
+    if (!isLoading && isReady && !hasAttemptedStartRef.current) {
+      const handleFirstInteraction = () => {
+        startAudio();
+        hasAttemptedStartRef.current = true;
+        // Remove listeners after first attempt
+        document.removeEventListener('click', handleFirstInteraction);
+        document.removeEventListener('keydown', handleFirstInteraction);
+        document.removeEventListener('touchstart', handleFirstInteraction);
+      };
+
+      document.addEventListener('click', handleFirstInteraction);
+      document.addEventListener('keydown', handleFirstInteraction);
+      document.addEventListener('touchstart', handleFirstInteraction);
+
+      return () => {
+        document.removeEventListener('click', handleFirstInteraction);
+        document.removeEventListener('keydown', handleFirstInteraction);
+        document.removeEventListener('touchstart', handleFirstInteraction);
+      };
+    }
+  }, [isLoading, isReady, startAudio]);
 
   const handleMailboxComplete = () => {
     setMailboxComplete(true);
@@ -59,6 +87,9 @@ export default function App() {
       <div ref={frameRef}>
         <ScratchFrameScene isUnlocked={ticketComplete} />
       </div>
+
+      {/* Background music control */}
+      <BackgroundMusicControl isMuted={isMuted} onToggleMute={toggleMute} />
     </div>
   );
 }

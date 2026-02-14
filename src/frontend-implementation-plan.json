@@ -1,37 +1,63 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Update scratch-off couple illustration asset and wire it into the Valentine scratch scene",
+  "title": "Site-wide looping background music + updated scratch-off couple illustration turban",
   "requirements": [
     {
-      "id": "REQ-18",
-      "summary": "Add the new comic-like candlelit couple selfie illustration as a local static generated asset with the agreed filename and dimensions.",
+      "id": "REQ-26",
+      "summary": "Add persistent, looping background music across the entire single-page Valentine experience with a user-gesture start fallback and a mute/unmute control.",
       "acceptanceCriteria": [
-        "A new static image exists under frontend/public/assets/generated with the agreed filename and dimensions.",
-        "The illustration clearly reflects all requested appearance/outfit/pose details (hair/no bangs, turban color, sweater color, smiles, sofa selfie composition, arms holding pose).",
-        "The illustration style is comic-like (slightly illustrated but still recognizable) with warm romantic lighting."
+        "Background music can be started successfully on both desktop and mobile (e.g., after the first user gesture if autoplay is blocked).",
+        "Once started, the music loops and continues playing while the user scrolls through Mailbox → Movie Ticket → Scratch Frame scenes without restarting between scenes.",
+        "Provide a simple on-screen control to mute/unmute (user-facing text in English).",
+        "No console/runtime errors occur if audio playback is blocked; the app remains usable."
       ],
       "file_operations": [
         {
-          "path": "frontend/public/assets/generated/couple-illustration-v2.dim_1400x1000.png",
+          "path": "frontend/src/hooks/useAmbientAudio.ts",
+          "operation": "modify",
+          "description": "Refactor the ambient audio hook to support a single persistent audio element, explicit mute/unmute state, and safe start behavior that handles browser autoplay restrictions without throwing (do not set 'playing' state if play() is blocked; keep the app usable)."
+        },
+        {
+          "path": "frontend/src/components/valentine/BackgroundMusicControl.tsx",
           "operation": "create",
-          "description": "Add the new generated static image asset matching the specified Punjabi mid‑20s couple selfie details (sofa, selfie pose, her red off‑shoulder full‑sleeve top + long black hair no bangs + teeth smile; him dark blue sweater + red Sikh turban/dastaar + small beard + closed-mouth smile; warm romantic/candlelit lighting)."
+          "description": "Create a small on-screen music control (Mute/Unmute text in English) to toggle background music mute state. Prefer using shadcn-ui button styling/components for consistent UI. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire site-wide background music into the single-page flow: mount the background audio controller once at the app level so it persists across all scenes, register a one-time first-user-gesture handler (pointer/keyboard) to attempt starting playback when autoplay is blocked, and render the BackgroundMusicControl overlay so it is available throughout the experience. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/valentine/OpeningMailboxScene.tsx",
+          "operation": "modify",
+          "description": "Remove mailbox-scene-only responsibility for starting ambient audio (so music is not tied to this scene) and rely on the app-level background music start logic while keeping mailbox interactions/letter content unchanged."
         }
       ]
     },
     {
-      "id": "REQ-19",
-      "summary": "Update ScratchFrameScene’s Valentine asset reference to use the new couple illustration filename and ensure the updated image consistently appears (no stale cached version).",
+      "id": "REQ-27",
+      "summary": "Replace the scratch-off revealed couple illustration with a revised image where the turban is plain dark red (no center gold element) and update references to a new filename to avoid caching.",
       "acceptanceCriteria": [
-        "frontend/src/components/valentine/assets.ts references the new couple illustration filename (not the previous one).",
-        "ScratchFrameScene renders the updated illustration from the new local static asset path.",
-        "Hard refresh and normal refresh both show the updated illustration reliably (no old image persists due to caching)."
+        "A newly generated/revised couple illustration image exists with the center golden turban element removed and the turban rendered as plain dark red.",
+        "`frontend/src/components/valentine/assets.ts` is updated so `ASSETS.coupleIllustration` points to the new filename (not the prior cached one).",
+        "The ScratchFrameScene displays the updated illustration after refresh (no old/cached image visible)."
       ],
       "file_operations": [
         {
+          "path": "frontend/public/assets/generated/couple-illustration-v5.dim_1400x1000.png",
+          "operation": "create",
+          "description": "Add the revised generated image asset (based on the requested edit: remove center golden turban element; turban plain dark red) at this exact path so the UI can load it as a static local asset."
+        },
+        {
           "path": "frontend/src/components/valentine/assets.ts",
           "operation": "modify",
-          "description": "Update ASSETS.coupleIllustration to reference the new local static asset filename at frontend/public/assets/generated/couple-illustration-v2.dim_1400x1000.png, replacing the previous couple-illustration.dim_1400x1000.png (filename change provides cache busting for normal and hard refresh)."
+          "description": "Update ASSETS.coupleIllustration to reference the new static asset filename at frontend/public/assets/generated/couple-illustration-v5.dim_1400x1000.png (ensure it no longer points to the prior v4 filename to avoid caching issues)."
+        },
+        {
+          "path": "frontend/src/hooks/useAssetPreloader.ts",
+          "operation": "modify",
+          "description": "Ensure the asset preloader continues to preload the couple illustration via ASSETS.coupleIllustration so the revised v5 image is loaded before the scenes render (no other scratch-off mechanics changes)."
         }
       ]
     }

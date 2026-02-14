@@ -1,10 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Replace the scratch-off revealed couple selfie illustration so it matches the specified couple details and ensure the app reliably displays the updated image (not a cached/old version).
+**Goal:** Add site-wide looping background music for the full Valentine single-page experience, and update the scratch-off couple illustration so the guy’s turban is plain dark red without the center golden ornament.
 
 **Planned changes:**
-- Add a new comic-like couple selfie illustration image (v2) under `frontend/public/assets/generated` with the requested appearance, outfits, pose, and warm romantic/candlelit lighting.
-- Update `frontend/src/components/valentine/assets.ts` so `ScratchFrameScene` references the new illustration filename and loads it from the local static asset path to avoid showing an old/cached image.
+- Add a background audio player that can start after an initial user gesture (to satisfy browser autoplay restrictions), loops continuously, and persists across all scenes while scrolling.
+- Add a simple on-screen mute/unmute control (English text) for the background music.
+- Update the scratch-off revealed couple illustration asset to remove the turban’s center golden element and make the turban plain dark red, then update asset references to use the new filename to avoid cached versions.
 
-**User-visible outcome:** The scratch-off reveal shows the updated couple selfie illustration (matching the couple details) consistently on both normal refresh and hard refresh.
+**User-visible outcome:** The page plays a looping background song across Mailbox → Movie Ticket → Scratch Frame scenes with a mute/unmute control, and the scratch-off reveal shows the updated couple illustration with a plain dark red turban (no center gold ornament).

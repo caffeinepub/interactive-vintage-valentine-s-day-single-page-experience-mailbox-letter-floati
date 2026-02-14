@@ -1,70 +1,58 @@
 {
   "kind": "build_request",
-  "title": "Replace the scratch-off couple selfie illustration so it matches the couple and is actually updated in the app",
+  "title": "Add site-wide background music and update turban detail in scratch-off illustration",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-18",
-      "text": "Replace the scratch-off revealed couple illustration with a new comic-like selfie illustration that matches the specified couple details (Punjabi, light-brown/lighter skin tones, mid‑20s; sitting on a sofa; selfie pose; she has long black hair with no bangs, brown eyes, red off‑shoulder full‑sleeve top, smiling with teeth; he has a shorter/small beard, dark blue sweater, red Sikh turban/dastaar, smiling without showing teeth; he is holding her in his arms), with warm romantic/candlelit lighting.",
+      "id": "REQ-26",
+      "text": "Ensure a background song plays across the entire Valentine single-page experience (not just within the mailbox scene), looping continuously and working on both desktop and mobile within browser autoplay restrictions.",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-4"
         ],
         "quotes": [
-          "the selfie again doesnt look like us you didnt change"
+          "can you please put a song in the background"
         ]
       },
       "acceptanceCriteria": [
-        "A new static image exists under frontend/public/assets/generated with the agreed filename and dimensions.",
-        "The illustration clearly reflects all requested appearance/outfit/pose details (hair/no bangs, turban color, sweater color, smiles, sofa selfie composition, arms holding pose).",
-        "The illustration style is comic-like (slightly illustrated but still recognizable) with warm romantic lighting."
+        "Background music can be started successfully on both desktop and mobile (e.g., after the first user gesture if autoplay is blocked).",
+        "Once started, the music loops and continues playing while the user scrolls through Mailbox → Movie Ticket → Scratch Frame scenes without restarting between scenes.",
+        "Provide a simple on-screen control to mute/unmute (user-facing text in English).",
+        "No console/runtime errors occur if audio playback is blocked; the app remains usable."
       ]
     },
     {
-      "id": "REQ-19",
-      "text": "Ensure the scratch-off scene displays the newly replaced couple illustration (and not a cached/previous version) by updating the Valentine asset reference used by ScratchFrameScene (via frontend/src/components/valentine/assets.ts) to point to the new generated filename.",
+      "id": "REQ-27",
+      "text": "Update the scratch-off revealed couple illustration so the guy’s turban is plain dark red with no golden element in the center, while keeping the rest of the illustration the same, and update the app to reference the new image filename to avoid caching old versions.",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-4"
         ],
         "quotes": [
-          "the selfie again doesnt look like us you didnt change"
+          "in the cartoon picture remove the golden thing in the center of the turban but keep the rest the same. keep his turban plain dark red"
         ]
       },
       "acceptanceCriteria": [
-        "frontend/src/components/valentine/assets.ts references the new couple illustration filename (not the previous one).",
-        "ScratchFrameScene renders the updated illustration from the new local static asset path.",
-        "Hard refresh and normal refresh both show the updated illustration reliably (no old image persists due to caching)."
+        "A newly generated/revised couple illustration image exists with the center golden turban element removed and the turban rendered as plain dark red.",
+        "`frontend/src/components/valentine/assets.ts` is updated so `ASSETS.coupleIllustration` points to the new filename (not the prior cached one).",
+        "The ScratchFrameScene displays the updated illustration after refresh (no old/cached image visible)."
       ]
     }
   ],
   "constraints": [
-    "Do not fetch images through the backend; use local static assets under frontend/public/assets/generated.",
-    "Do not edit any files under frontend/immutablePaths (e.g., frontend/src/hooks/useInternetIdentity.ts(x), frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui).",
-    "Backend must remain a single Motoko actor; do not add additional backend services."
+    "Do not modify files under the immutable frontend paths listed in SYSTEM_CONTEXT (compose existing UI components instead).",
+    "Do not fetch images through the backend; keep static assets local under `frontend/public/assets/generated`."
   ],
   "nonGoals": [
-    "Do not change the letter text content in frontend/src/components/valentine/LetterContent.ts.",
-    "Do not redesign the mailbox or movie ticket interactions beyond what is required to confirm the updated selfie image is shown."
+    "Changing the letter content or wording in any scene.",
+    "Altering the scratch-off mechanics/threshold or other character details beyond the turban center ornament removal and making the turban plain dark red."
   ],
   "imageRequirements": {
-    "required": [
-      "Comic-like romantic couple selfie on a sofa, warm candlelit glow, Punjabi mid‑20s couple; she long black hair (no bangs), brown eyes, red off‑shoulder full‑sleeve top, smiling with teeth; he dark blue sweater, red Sikh turban (dastaar), shorter/small beard, smiling without showing teeth; he holding her in his arms (couple-illustration-v2.dim_1400x1000.png)"
-    ],
+    "required": [],
     "edits": [
-      "Update the couple selfie illustration so it matches the specified couple details and is visibly different from the current image (couple-illustration.dim_1400x1000.png > couple-illustration-v2.dim_1400x1000.png)"
+      "Remove the golden element in the center of the turban; keep everything else the same; make the turban plain dark red (couple-illustration-v4.dim_1400x1000.png > couple-illustration-v5.dim_1400x1000.png)"
     ]
-  },
-  "userProfileUpdate": {
-    "goalsToAdd": [],
-    "goalsToRemove": [],
-    "preferencesToAdd": [],
-    "preferencesToRemove": [],
-    "miscToAdd": [],
-    "miscToRemove": [],
-    "fieldsToSet": {},
-    "fieldsToDelete": []
   }
 }

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { ASSETS } from './assets';
 import { LETTER_CONTENT } from './LetterContent';
-import { useAmbientAudio } from '../../hooks/useAmbientAudio';
 import { ContinuePrompt } from './ContinuePrompt';
 
 interface OpeningMailboxSceneProps {
@@ -13,14 +12,10 @@ interface OpeningMailboxSceneProps {
 export function OpeningMailboxScene({ onComplete, onScrollNext, showContinue }: OpeningMailboxSceneProps) {
   const [envelopeVisible, setEnvelopeVisible] = useState(false);
   const [letterOpen, setLetterOpen] = useState(false);
-  const { startAudio, isPlaying } = useAmbientAudio();
 
   const handleMailboxClick = () => {
     if (!envelopeVisible) {
       setEnvelopeVisible(true);
-      if (!isPlaying) {
-        startAudio();
-      }
     }
   };
 

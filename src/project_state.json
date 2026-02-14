@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 13,
+  "projectStateVersion": 21,
   "summary": "Shift the experience direction from moody vintage to a fun, more playful Valentine’s Day single-page interactive experience while fixing major usability blockers (scroll not working; letter not readable; inability to scroll after letter).",
   "architectural_notes": [
     "Single-page interactive, section-by-section narrative flow gated by user interactions (click/scroll/drag) to ensure no passive sections.",
@@ -21,8 +21,8 @@
     "Scratch-off revealed couple illustration was not updated in the latest draft (still does not match the specified couple description).",
     "Latest deployed version still shows the old scratch-off revealed selfie; the requested updated couple illustration was not applied/changed."
   ],
-  "isFixRequest": true,
-  "imageRequirements": "## Required Images\n- Comic-like romantic couple selfie on a sofa, warm candlelit glow, Punjabi mid‑20s couple; she long black hair (no bangs), brown eyes, red off‑shoulder full‑sleeve top, smiling with teeth; he dark blue sweater, red Sikh turban (dastaar), shorter/small beard, smiling without showing teeth; he holding her in his arms (couple-illustration-v2.dim_1400x1000.png)\n\n## Edit Images\n- Update the couple selfie illustration so it matches the specified couple details and is visibly different from the current image (couple-illustration.dim_1400x1000.png > couple-illustration-v2.dim_1400x1000.png)",
+  "isFixRequest": false,
+  "imageRequirements": "## Edit Images\n- Remove the golden element in the center of the turban; keep everything else the same; make the turban plain dark red (couple-illustration-v4.dim_1400x1000.png > couple-illustration-v5.dim_1400x1000.png)",
   "existing_features": [
     {
       "id": "feature-create-a-single-page-fully-interactive-valentine-s-day-experience-with-a-consistent-moody-vintage-romantic-aesthetic-warm-golden-tones-soft-shadows-old-paper-textures-subtle-flickering-candlelight-animations-and-slow-emotional-transitions-the-overall-vibe-must-also-feel-fun-cute-and-aesthetic-while-staying-vintage",
@@ -175,6 +175,70 @@
         "REQ-19"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-generate-a-new-revealed-couple-selfie-illustration-for-the-scratch-off-frame-that-is-clearly-different-from-the-current-one-uses-a-more-overtly-cartoon-comic-style-and-includes-a-turban-on-the-guy",
+      "title": "Generate a new revealed couple selfie illustration for the scratch-off frame that is clearly different from the current one, uses a more overtly cartoon/comic style, and includes a turban on the guy.",
+      "reqIds": [
+        "REQ-20"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-valentine-assets-mapping-so-the-scratch-off-scene-loads-the-newly-generated-couple-illustration-file-using-a-new-filename-to-avoid-browser-caching-of-the-prior-image",
+      "title": "Update the Valentine assets mapping so the scratch-off scene loads the newly generated couple illustration file (using a new filename to avoid browser caching of the prior image).",
+      "reqIds": [
+        "REQ-21"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-generate-and-add-a-new-scratch-off-revealed-couple-illustration-that-is-clearly-more-cartoon-comic-cute-and-fun-and-matches-these-exact-visual-traits-both-people-are-south-asian-the-guy-is-wearing-a-clearly-red-sikh-turban-the-girl-has-black-hair-and-big-brown-eyes-the-image-composition-must-read-as-a-selfie-close-framing-selfie-angle-pose-with-a-playful-valentine-vibe",
+      "title": "Generate and add a new scratch-off revealed couple illustration that is clearly more cartoon/comic, cute, and fun, and matches these exact visual traits: both people are South Asian; the guy is wearing a clearly RED Sikh turban; the girl has BLACK hair and BIG BROWN eyes; the image composition must read as a selfie (close framing, selfie angle/pose) with a playful Valentine vibe.",
+      "reqIds": [
+        "REQ-22"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-valentine-asset-mapping-so-the-scratch-off-scene-loads-the-newly-generated-couple-illustration-using-the-new-filename-to-avoid-browser-caching-and-ensure-scratchframescene-displays-the-new-image",
+      "title": "Update the Valentine asset mapping so the scratch-off scene loads the newly generated couple illustration using the new filename to avoid browser caching, and ensure ScratchFrameScene displays the new image.",
+      "reqIds": [
+        "REQ-23"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-make-the-scratch-off-reveal-feel-more-cartoon-cute-and-fun-by-enhancing-the-scratchframescene-reveal-moment-animation-feedback-without-changing-the-scratch-mechanics-when-the-scratch-threshold-is-reached-add-a-clearly-noticeable-playful-reveal-effect-e-g-a-brief-pop-bounce-on-the-frame-or-image-and-a-fun-sparkle-burst-while-keeping-all-existing-user-facing-text-in-english",
+      "title": "Make the scratch-off reveal feel more cartoon, cute, and fun by enhancing the ScratchFrameScene reveal moment animation/feedback (without changing the scratch mechanics): when the scratch threshold is reached, add a clearly noticeable playful reveal effect (e.g., a brief pop/bounce on the frame or image and a fun sparkle burst) while keeping all existing user-facing text in English.",
+      "reqIds": [
+        "REQ-24"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-replace-the-movie-ticket-section-interaction-so-it-is-no-longer-a-fast-moving-catch-the-ticket-game-implement-a-different-slower-clearer-mini-game-interaction-in-frontend-src-components-valentine-movieticketscene-tsx-that-works-on-both-desktop-and-mobile-and-only-reveals-the-ticket-details-after-the-mini-game-is-successfully-completed-then-call-oncomplete-as-it-does-today",
+      "title": "Replace the Movie Ticket section interaction so it is no longer a fast-moving “catch the ticket” game. Implement a different, slower, clearer mini‑game interaction in `frontend/src/components/valentine/MovieTicketScene.tsx` that works on both desktop and mobile, and only reveals the ticket details after the mini‑game is successfully completed (then call `onComplete()` as it does today).",
+      "reqIds": [
+        "REQ-25"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-a-background-song-plays-across-the-entire-valentine-single-page-experience-not-just-within-the-mailbox-scene-looping-continuously-and-working-on-both-desktop-and-mobile-within-browser-autoplay-restrictions",
+      "title": "Ensure a background song plays across the entire Valentine single-page experience (not just within the mailbox scene), looping continuously and working on both desktop and mobile within browser autoplay restrictions.",
+      "reqIds": [
+        "REQ-26"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-scratch-off-revealed-couple-illustration-so-the-guy-s-turban-is-plain-dark-red-with-no-golden-element-in-the-center-while-keeping-the-rest-of-the-illustration-the-same-and-update-the-app-to-reference-the-new-image-filename-to-avoid-caching-old-versions",
+      "title": "Update the scratch-off revealed couple illustration so the guy’s turban is plain dark red with no golden element in the center, while keeping the rest of the illustration the same, and update the app to reference the new image filename to avoid caching old versions.",
+      "reqIds": [
+        "REQ-27"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -229,6 +293,36 @@
     {
       "id": "AR-9",
       "summary": "Replace/update the scratch-off revealed selfie illustration so it matches the couple: Punjabi, light brown/lighter skin, mid-20s; comic-like style; selfie on a sofa; she has long black hair (no bangs), brown eyes, red off-shoulder full sleeve top, smiling with teeth; he has shorter/small beard, dark blue sweater, red Sikh turban (dastaar), smiling without showing teeth; he’s holding her in his arms",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Update/replace scratch-off revealed couple selfie illustration to clearly match: South Asian couple; guy wearing a RED Sikh turban; girl with black hair and big brown eyes; selfie pose; overall more cartoon/cute/fun style (clearly different from current image)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Change the movie ticket interaction: ticket currently runs/moves too fast; replace the “catch the moving ticket” mechanic with a different, slower/clearer mini-game style interaction for the movie ticket section",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Set the letter text color to black (or near-black) to improve readability",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Add background music/song that plays during the experience (site-wide background audio)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-14",
+      "summary": "Update the scratch-off revealed cartoon couple image: remove the golden element in the center of the guy’s turban and keep the turban plain dark red (keep everything else the same)",
       "reqIds": [],
       "status": "pending"
     }
