@@ -1,0 +1,247 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Vintage Valentine’s Day interactive single-page experience",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Apply a consistent moody, vintage, romantic aesthetic with subtle candlelight flicker, old-paper textures, and slow transitions; ensure every section requires interaction to proceed.",
+      "acceptanceCriteria": [
+        "Visual theme is consistently applied across all sections (colors, textures, lighting, typography, animation pacing).",
+        "Candlelight/flicker effect is present but subtle (not distracting) and appears in the overall scene styling.",
+        "Page uses smooth fades/slow transitions between sections; no abrupt jumps.",
+        "No section is purely passive; each section requires an explicit user interaction to proceed."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "create",
+          "description": "Create the single-page flow container that orchestrates the three interactive scenes, applies slow/smooth transitions between sections, and enforces interaction-gated progression (no skipping ahead without completing each interaction)."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "create",
+          "description": "Add global theme tokens and styling for warm golden tones, soft shadows, old-paper texture layering, subtle vignette, and a gentle candlelight flicker animation; ensure transitions are slow and emotionally paced."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend theme with vintage/romantic color tokens, shadows, and keyframes/animations needed for subtle flicker and slow fades to keep styling consistent across sections."
+        },
+        {
+          "path": "frontend/src/components/valentine/SceneShell.tsx",
+          "operation": "create",
+          "description": "Create a shared scene layout wrapper that applies consistent background texture, lighting overlays, and transition behavior so all sections feel cohesive."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Build the Opening Scene with candlelit mailbox, user-gesture-started ambient music, click-to-reveal envelope, click-to-open letter with exact text in handwritten font, and a post-reveal “Scroll to continue” indicator.",
+      "acceptanceCriteria": [
+        "Ambient romantic instrumental audio plays (with an obvious way to start it that complies with browser autoplay restrictions, e.g., begins on first user interaction).",
+        "Mailbox has an idle animation (gentle movement and/or glow) indicating interactivity.",
+        "Clicking the mailbox triggers an envelope slide-out animation; envelope is not shown as open before the click.",
+        "Envelope text reads exactly: \"To: My Bestie 🤍\".",
+        "Clicking the envelope unfolds the letter with a soft animation and shows the full message exactly as provided in the prompt.",
+        "A handwritten-style font is used for the letter body; letter remains readable on both desktop and mobile.",
+        "“Scroll to continue” indicator appears only after the letter is opened and the message is visible."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/valentine/OpeningMailboxScene.tsx",
+          "operation": "create",
+          "description": "Implement the opening candlelit mailbox scene with (1) idle mailbox glow/motion, (2) click mailbox to slide out envelope, (3) envelope overlay text exactly \"To: My Bestie 🤍\", (4) click envelope to unfold letter and reveal the exact provided message with preserved line breaks/emojis, and (5) show a subtle glowing “Scroll to continue” indicator only after the letter is open and readable."
+        },
+        {
+          "path": "frontend/src/components/valentine/LetterContent.ts",
+          "operation": "create",
+          "description": "Centralize the exact letter message text (verbatim, including spelling, punctuation, line breaks, and emojis) so the UI renders it without accidental edits."
+        },
+        {
+          "path": "frontend/src/hooks/useAmbientAudio.ts",
+          "operation": "create",
+          "description": "Add a hook to manage ambient audio lifecycle in a browser-compliant way: do not attempt autoplay; start playback on first user gesture (e.g., mailbox click), and keep it playing smoothly after start."
+        },
+        {
+          "path": "frontend/src/components/valentine/StartAudioHint.tsx",
+          "operation": "create",
+          "description": "Add an obvious, minimal UI hint tied to the first interaction indicating audio will begin on interaction; use the shadcn-ui Button component for accessible styling where needed. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Create the floating vintage movie ticket section that appears after scrolling past the letter, requires catching the moving ticket, and reveals exact details with a subtle shimmer/glow effect.",
+      "acceptanceCriteria": [
+        "Ticket does not appear until the user scrolls beyond the letter experience.",
+        "Ticket drifts around the viewport and is clearly clickable while moving.",
+        "Clicking the ticket stops its movement and triggers an enlarge animation.",
+        "Revealed text matches exactly (including emoji and capitalization): 🎬 Movie Night; February 14, 2026; Movie: TBD; Time: 10 PM (MT).",
+        "Romantic line appears exactly: “Front row seats to forever with you.”",
+        "A visible but subtle glow/shimmer effect plays during/after the reveal.",
+        "User cannot progress past this section without catching (clicking) the ticket."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/valentine/MovieTicketScene.tsx",
+          "operation": "create",
+          "description": "Implement the scroll-activated ticket scene: the ticket drifts gently around the viewport until clicked (caught), then stops motion, enlarges, reveals the exact required text and romantic line, and plays a subtle shimmer/glow reveal effect; enforce interaction-gated progression so users cannot scroll past without catching the ticket."
+        },
+        {
+          "path": "frontend/src/hooks/useIntersectionSceneActivation.ts",
+          "operation": "create",
+          "description": "Add a hook to activate/deactivate scenes based on scroll position (IntersectionObserver) so the ticket only appears after the letter section is scrolled past and section gating can be applied reliably."
+        },
+        {
+          "path": "frontend/src/hooks/useScrollGate.ts",
+          "operation": "create",
+          "description": "Implement a scroll gating utility that can prevent scrolling beyond the active section until its required interaction is completed, supporting wheel and touchmove (mobile) with proper event handling."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire the movie ticket scene into the single-page flow after the opening scene and connect progression state so the user cannot proceed to the next section until the ticket is caught."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Build the scratch-off framed illustration section with a drag-to-scratch overlay (mouse + touch) that progressively reveals the required couple illustration and requires a reveal threshold to complete.",
+      "acceptanceCriteria": [
+        "A framed image section appears after the movie ticket section via scrolling.",
+        "A scratch-off overlay fully covers the image at first and is removable via pointer/touch drag.",
+        "Scratching reveals the underlying illustration progressively along the drag path (not a simple fade).",
+        "Scratch interaction works on both desktop (mouse) and mobile (touch).",
+        "Revealed illustration matches the specified appearance/outfits/pose and warm candlelit, intimate style.",
+        "User cannot complete this section without scratching enough of the overlay to clearly see the image (define a reveal threshold, e.g., percentage scratched)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/valentine/ScratchFrameScene.tsx",
+          "operation": "create",
+          "description": "Implement the candlelit vintage gold frame scene that uses a canvas-based scratch-off overlay (lottery ticket style) to progressively reveal the underlying illustration along the drag path; support both mouse and touch input and require a clear reveal threshold before marking the section complete."
+        },
+        {
+          "path": "frontend/src/hooks/useScratchOffCanvas.ts",
+          "operation": "create",
+          "description": "Create a reusable hook for scratch-off behavior: initialize overlay texture, process pointer/touch drag strokes to erase parts of the overlay, and compute approximate scratched percentage for completion threshold logic."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire the scratch-off frame scene after the movie ticket scene and enforce progression gating until the scratch reveal threshold is reached."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Harden the experience with asset preloading, graceful loading UI, robust mouse/touch handling, and reliable state resets on refresh with no runtime errors.",
+      "acceptanceCriteria": [
+        "No uncaught errors in the browser console during a full playthrough.",
+        "All interactions work with both mouse and touch (click/tap, drag, scroll).",
+        "Refreshing the page resets the experience to the opening mailbox state in a consistent way.",
+        "If assets are still loading, the UI shows a graceful loading state rather than broken/blank sections.",
+        "Audio does not attempt autoplay before a user gesture; it starts once the user interacts (e.g., first click on mailbox) and continues smoothly."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useAssetPreloader.ts",
+          "operation": "create",
+          "description": "Implement a preloader that loads required generated images/textures and the ambient audio before enabling interactions; expose progress/ready state to the UI."
+        },
+        {
+          "path": "frontend/src/components/valentine/LoadingOverlay.tsx",
+          "operation": "create",
+          "description": "Add a graceful loading overlay shown until critical assets are preloaded, preventing partially-rendered scenes and reducing progression-state bugs."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Integrate asset preloading, show loading UI until ready, initialize all scene state deterministically on mount (ensuring refresh returns to the mailbox start), and coordinate unified pointer/touch handling to avoid inconsistent interaction states."
+        },
+        {
+          "path": "frontend/src/hooks/useUnifiedPointer.ts",
+          "operation": "create",
+          "description": "Add a small helper hook/utilities to normalize pointer/touch interactions for click/tap and drag behaviors used by the ticket catch and scratch-off interactions."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Add and reference required generated static assets locally from frontend/public/assets/generated; do not fetch images through the backend.",
+      "acceptanceCriteria": [
+        "All custom visuals (mailbox scene art, ticket art, frame art, paper textures, scratch illustration) load from frontend/public/assets/generated.",
+        "No backend endpoints are used for serving or transforming images.",
+        "Build outputs successfully with the static assets present and referenced paths resolve correctly."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/mailbox-scene.dim_1920x1080.png",
+          "operation": "create",
+          "description": "Add the generated mailbox scene background illustration as a static asset to be referenced directly by the opening scene UI."
+        },
+        {
+          "path": "frontend/public/assets/generated/envelope.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add the generated vintage envelope illustration as a static asset to be referenced directly by the opening scene UI."
+        },
+        {
+          "path": "frontend/public/assets/generated/letter-paper.dim_1400x900.png",
+          "operation": "create",
+          "description": "Add the generated unfolded letter paper illustration as a static asset to be referenced directly by the opening scene UI."
+        },
+        {
+          "path": "frontend/public/assets/generated/movie-ticket.dim_1000x500.png",
+          "operation": "create",
+          "description": "Add the generated vintage movie ticket illustration as a static asset to be referenced directly by the ticket scene UI."
+        },
+        {
+          "path": "frontend/public/assets/generated/gold-frame.dim_1400x1000.png",
+          "operation": "create",
+          "description": "Add the generated ornate gold frame illustration as a static asset to be referenced directly by the scratch-off frame scene UI."
+        },
+        {
+          "path": "frontend/public/assets/generated/scratch-overlay.dim_1400x1000.png",
+          "operation": "create",
+          "description": "Add the generated scratch-off overlay texture as a static asset to be used by the scratch-off canvas masking/erasing logic."
+        },
+        {
+          "path": "frontend/public/assets/generated/couple-illustration.dim_1400x1000.png",
+          "operation": "create",
+          "description": "Add the generated couple illustration as a static asset to be revealed under the scratch-off layer in the frame scene UI."
+        },
+        {
+          "path": "frontend/public/assets/generated/paper-texture-tile.dim_512x512.png",
+          "operation": "create",
+          "description": "Add the generated seamless old paper texture tile as a static asset for background texture layering across scenes."
+        },
+        {
+          "path": "frontend/public/assets/audio/romantic-instrumental.mp3",
+          "operation": "create",
+          "description": "Add a local ambient romantic instrumental audio file to be played after the first user gesture; reference it as a static asset (no backend fetching)."
+        },
+        {
+          "path": "frontend/src/components/valentine/assets.ts",
+          "operation": "create",
+          "description": "Centralize static asset paths referencing the exact files under frontend/public/assets/generated (and local audio) to avoid typos and ensure all scenes use local assets only."
+        },
+        {
+          "path": "frontend/src/components/valentine/OpeningMailboxScene.tsx",
+          "operation": "modify",
+          "description": "Update the opening scene to reference frontend/public/assets/generated/mailbox-scene.dim_1920x1080.png, frontend/public/assets/generated/envelope.dim_1200x800.png, frontend/public/assets/generated/letter-paper.dim_1400x900.png, and frontend/public/assets/generated/paper-texture-tile.dim_512x512.png via the centralized assets module (no backend fetching)."
+        },
+        {
+          "path": "frontend/src/components/valentine/MovieTicketScene.tsx",
+          "operation": "modify",
+          "description": "Update the ticket scene to reference frontend/public/assets/generated/movie-ticket.dim_1000x500.png (and paper texture tile if used) via the centralized assets module (no backend fetching)."
+        },
+        {
+          "path": "frontend/src/components/valentine/ScratchFrameScene.tsx",
+          "operation": "modify",
+          "description": "Update the scratch-off scene to reference frontend/public/assets/generated/gold-frame.dim_1400x1000.png, frontend/public/assets/generated/scratch-overlay.dim_1400x1000.png, and frontend/public/assets/generated/couple-illustration.dim_1400x1000.png via the centralized assets module (no backend fetching)."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "frontend/src/App.tsx": "Main application component that orchestrates the three interactive Valentine's scenes (mailbox, ticket, frame) with state management for progression and asset preloading.",
+  "frontend/src/components/valentine/OpeningMailboxScene.tsx": "Interactive mailbox scene with click-to-reveal envelope, click-to-open letter with exact message text in handwritten font, ambient audio trigger, and scroll-to-continue indicator.",
+  "frontend/src/components/valentine/MovieTicketScene.tsx": "Floating movie ticket scene with drifting animation, click-to-catch interaction, enlarged reveal with event details and romantic line, plus shimmer effect (fixed useRef type error).",
+  "frontend/src/components/valentine/ScratchFrameScene.tsx": "Gold-framed scratch-off scene with canvas-based drag-to-reveal interaction showing the couple illustration underneath.",
+  "frontend/src/components/valentine/LoadingOverlay.tsx": "Graceful loading screen with progress bar shown while assets preload.",
+  "frontend/src/components/valentine/LetterContent.ts": "Centralized exact letter message text with preserved formatting, line breaks, and emojis.",
+  "frontend/src/components/valentine/assets.ts": "Centralized asset path constants for all generated images, textures, and audio files.",
+  "frontend/src/hooks/useAmbientAudio.ts": "Hook managing ambient romantic instrumental audio lifecycle with browser-compliant playback starting on first user interaction.",
+  "frontend/src/hooks/useAssetPreloader.ts": "Hook that preloads all required images and audio with progress tracking before enabling interactions.",
+  "frontend/src/hooks/useScratchOffCanvas.ts": "Reusable hook for canvas-based scratch-off behavior with pointer/touch drag support and percentage tracking.",
+  "frontend/src/hooks/useQueries.ts": "Empty placeholder file as backend has no methods for this frontend-only experience.",
+  "frontend/src/index.css": "Global styles with vintage Valentine's aesthetic including warm golden tones, handwritten fonts, candlelight flicker, and all custom animations.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with vintage color palette, handwritten fonts, custom shadows, and animation keyframes."
+}

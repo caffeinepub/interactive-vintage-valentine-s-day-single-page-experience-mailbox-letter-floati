@@ -1,0 +1,190 @@
+{
+  "kind": "build_request",
+  "title": "Interactive vintage Valentine’s Day single-page experience (mailbox letter, floating ticket catch, scratch-off frame)",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a single-page, fully interactive Valentine’s Day experience with a consistent moody, vintage, romantic aesthetic: warm golden tones, soft shadows, old-paper textures, subtle flickering candlelight animations, and slow emotional transitions. The overall vibe must also feel fun, cute, and aesthetic while staying vintage.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2",
+          "msg-4",
+          "msg-5"
+        ],
+        "quotes": [
+          "The entire experience should feel moody,, vintage, romantic, with warm golden tones, soft shadows, subtle flickering candle animations, old-paper textures, and slow, emotional transitions.",
+          "make sure it works this time and the whole vibe i want it to be fun and cute and aesthetic with vintagy",
+          "no i need you to start building and this time everything should be the way i asked"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Visual theme is consistently applied across all sections (colors, textures, lighting, typography, animation pacing).",
+        "Candlelight/flicker effect is present but subtle (not distracting) and appears in the overall scene styling.",
+        "Page uses smooth fades/slow transitions between sections; no abrupt jumps.",
+        "No section is purely passive; each section requires an explicit user interaction to proceed."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement the Opening Scene: a dim candlelit setting with a vintage mailbox centered on screen and subtle ambient romantic instrumental music. The mailbox must gently move and/or softly glow to hint that it is clickable. On click, a letter/envelope slowly slides out. The envelope must show exactly: \"To: My Bestie 🤍\". The user must click the envelope to open it, then the letter unfolds with a soft animation and displays the message in a handwritten-style font exactly as provided (including spelling, punctuation, line breaks, and emojis). After the message is revealed and readable, show a subtle glowing “Scroll to continue” indicator.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "The website opens in a dim candlelit setting with a vintage mailbox in the center of the screen. There should be subtle ambient romantic instrumental music playing.",
+          "When he clicks the mailbox, a letter slowly slides out.",
+          "On the envelope it says:\n\nTo: My Bestie 🤍",
+          "He must click the envelope to open it.",
+          "When opened, the letter unfolds with a soft animation, and the message appears in a handwritten-style font.",
+          "The message must appear exactly as written:",
+          "After he finishes reading, there should be a subtle “Scroll to continue” indicator glowing softly."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Ambient romantic instrumental audio plays (with an obvious way to start it that complies with browser autoplay restrictions, e.g., begins on first user interaction).",
+        "Mailbox has an idle animation (gentle movement and/or glow) indicating interactivity.",
+        "Clicking the mailbox triggers an envelope slide-out animation; envelope is not shown as open before the click.",
+        "Envelope text reads exactly: \"To: My Bestie 🤍\".",
+        "Clicking the envelope unfolds the letter with a soft animation and shows the full message exactly as provided in the prompt.",
+        "A handwritten-style font is used for the letter body; letter remains readable on both desktop and mobile.",
+        "“Scroll to continue” indicator appears only after the letter is opened and the message is visible."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Implement the second interactive section: a vintage movie ticket that appears when the user scrolls past the letter section. The ticket must float/drift gently around the screen as if carried by air. The user must click the moving ticket to “catch” it (stop its motion). On successful catch, the ticket enlarges and reveals the following details: \"🎬 Movie Night\", \"February 14, 2026\", \"Movie: TBD\", \"Time: 10 PM (MT)\". Underneath, add the romantic line: “Front row seats to forever with you.” Include a gentle glow or shimmer effect when the ticket’s details are revealed.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "When he scrolls, a vintage movie ticket appears floating and drifting around the screen.",
+          "He must click the ticket to “catch” it and stop it from moving.",
+          "Once clicked, it enlarges and reveals:\n\n🎬 Movie Night\nFebruary 14, 2026\nMovie: TBD\nTime: 10 PM (MT)\n\nUnderneath that, add a soft romantic line like:\n“Front row seats to forever with you.”",
+          "There should be a gentle glow or shimmer effect when it’s revealed."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Ticket does not appear until the user scrolls beyond the letter experience.",
+        "Ticket drifts around the viewport and is clearly clickable while moving.",
+        "Clicking the ticket stops its movement and triggers an enlarge animation.",
+        "Revealed text matches exactly (including emoji and capitalization): 🎬 Movie Night; February 14, 2026; Movie: TBD; Time: 10 PM (MT).",
+        "Romantic line appears exactly: “Front row seats to forever with you.”",
+        "A visible but subtle glow/shimmer effect plays during/after the reveal.",
+        "User cannot progress past this section without catching (clicking) the ticket."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Implement the third interactive section: a candlelit vintage gold picture frame with an image area covered by a scratch-off layer (lottery ticket style). The user must drag with mouse (desktop) or finger (mobile) to scratch off the overlay and reveal the image underneath. The revealed image must be a soft, romantic, slightly illustrated-but-realistic comic-style illustration with warm candlelit glow and intimate vibe, matching these exact character details: both in their 20s; both lighter skin; he has a shorter beard; he wears a dark blue sweater; he wears a red dastaar (Sikh turban); she has long black hair (no bangs), brown eyes, wearing a red off-shoulder full sleeve top; sitting on a sofa; selfie pose; she smiles with teeth; he smiles without showing teeth; he’s holding her in his arms.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "After scrolling again, there is a vintage gold picture frame in candlelight.",
+          "The image inside should be covered with a scratch-off layer (like a lottery ticket).",
+          "He must drag his mouse or finger to scratch and reveal what’s underneath.",
+          "Behind it is a soft, romantic, comic-style illustration of us:",
+          "Both in our 20s",
+          "Both lighter skin",
+          "He has a shorter beard",
+          "He’s wearing a dark blue sweater",
+          "He’s wearing a red dastaar (Sikh turban)",
+          "I have long black hair (no bangs)",
+          "Brown eyes",
+          "Wearing a red off-shoulder full sleeve top",
+          "We’re sitting on a sofa",
+          "It’s a selfie pose",
+          "I’m smiling with my teeth",
+          "He’s smiling without showing his teeth",
+          "He’s holding me in his arms",
+          "The art style should be soft, romantic, slightly illustrated but realistic — warm candlelit glow, intimate vibe."
+        ]
+      },
+      "acceptanceCriteria": [
+        "A framed image section appears after the movie ticket section via scrolling.",
+        "A scratch-off overlay fully covers the image at first and is removable via pointer/touch drag.",
+        "Scratching reveals the underlying illustration progressively along the drag path (not a simple fade).",
+        "Scratch interaction works on both desktop (mouse) and mobile (touch).",
+        "Revealed illustration matches the specified appearance/outfits/pose and warm candlelit, intimate style.",
+        "User cannot complete this section without scratching enough of the overlay to clearly see the image (define a reveal threshold, e.g., percentage scratched)."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Ensure the experience is robust and “works this time”: implement asset preloading (images, textures, audio), handle mobile/desktop input properly, and prevent progression-state bugs. The app must run without runtime errors, and all interactive steps must be reliably repeatable on refresh.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4",
+          "msg-5"
+        ],
+        "quotes": [
+          "make sure it works this time",
+          "no i need you to start building and this time everything should be the way i asked"
+        ]
+      },
+      "acceptanceCriteria": [
+        "No uncaught errors in the browser console during a full playthrough.",
+        "All interactions work with both mouse and touch (click/tap, drag, scroll).",
+        "Refreshing the page resets the experience to the opening mailbox state in a consistent way.",
+        "If assets are still loading, the UI shows a graceful loading state rather than broken/blank sections.",
+        "Audio does not attempt autoplay before a user gesture; it starts once the user interacts (e.g., first click on mailbox) and continues smoothly."
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Add the required generated static assets to the frontend and render them locally from the app (do not fetch images through the backend). Place generated images under frontend/public/assets/generated and ensure the UI uses those files for the mailbox scene, movie ticket, frame, textures, and the revealed illustration.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "The website opens in a dim candlelit setting with a vintage mailbox in the center of the screen.",
+          "a vintage movie ticket appears floating",
+          "a vintage gold picture frame in candlelight",
+          "old-paper textures"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All custom visuals (mailbox scene art, ticket art, frame art, paper textures, scratch illustration) load from frontend/public/assets/generated.",
+        "No backend endpoints are used for serving or transforming images.",
+        "Build outputs successfully with the static assets present and referenced paths resolve correctly."
+      ]
+    }
+  ],
+  "constraints": [
+    "Use English for any user-facing text.",
+    "Frontend immutable paths must not be edited: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui.",
+    "No third-party authentication providers; only Internet Identity is allowed (do not add other auth).",
+    "No WebSockets/real-time chat/push notifications.",
+    "Backend must remain a single Motoko actor if any backend changes are needed (this build should not require backend changes)."
+  ],
+  "nonGoals": [
+    "User accounts, saving progress, or persisting state across sessions.",
+    "Any external database or third-party backend services.",
+    "Changing the provided letter text or substituting paraphrased content.",
+    "Adding additional sections beyond the three specified interactive scenes (mailbox/letter, movie ticket, scratch-off frame)."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Candlelit vintage mailbox scene background illustration with warm golden tones, soft shadows, subtle vignette (mailbox-scene.dim_1920x1080.png)",
+      "Vintage envelope illustration with old-paper texture, readable blank area for overlay text (envelope.dim_1200x800.png)",
+      "Unfolded vintage letter paper illustration with old-paper texture and gentle wear (letter-paper.dim_1400x900.png)",
+      "Vintage movie ticket illustration with warm paper tone and ornamental edges (movie-ticket.dim_1000x500.png)",
+      "Vintage ornate gold frame illustration with candlelit highlights, centered opening for image (gold-frame.dim_1400x1000.png)",
+      "Scratch-off overlay texture (silver/gray latex) suitable for masking and erasing (scratch-overlay.dim_1400x1000.png)",
+      "Soft romantic illustrated-but-realistic couple selfie on sofa with warm candlelit glow matching the specified appearance details (couple-illustration.dim_1400x1000.png)",
+      "Old paper texture tile, seamless (paper-texture-tile.dim_512x512.png)"
+    ],
+    "edits": []
+  }
+}

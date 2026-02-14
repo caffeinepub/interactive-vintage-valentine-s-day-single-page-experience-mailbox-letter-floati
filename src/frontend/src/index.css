@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Dawning+of+a+New+Day&family=Lovers+Quarrel&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 0.625rem;
+        
+        /* Vintage Valentine's color palette */
+        --vintage-dark: 20 0.02 30;
+        --vintage-dark-lighter: 30 0.02 30;
+        --vintage-gold: 75 0.15 60;
+        --vintage-ink: 25 0.03 30;
+        --vintage-glow: 65 0.2 50;
+        --vintage-paper: 90 0.05 60;
+        
+        --background: var(--vintage-dark);
+        --foreground: var(--vintage-paper);
+        --card: 25 0.02 30;
+        --card-foreground: var(--vintage-paper);
+        --popover: 25 0.02 30;
+        --popover-foreground: var(--vintage-paper);
+        --primary: var(--vintage-gold);
+        --primary-foreground: var(--vintage-dark);
+        --secondary: 35 0.03 30;
+        --secondary-foreground: var(--vintage-paper);
+        --muted: 35 0.03 30;
+        --muted-foreground: 60 0.05 50;
+        --accent: var(--vintage-glow);
+        --accent-foreground: var(--vintage-dark);
+        --destructive: 0.577 0.245 27.325;
+        --destructive-foreground: 0.985 0 0;
+        --border: 40 0.03 30;
+        --input: 40 0.03 30;
+        --ring: var(--vintage-gold);
+    }
+
+    * {
+        @apply border-border;
+    }
+    
+    body {
+        @apply bg-vintage-dark text-foreground;
+        font-family: 'Georgia', serif;
+    }
+}
+
+@layer utilities {
+    .bg-vintage-dark {
+        background-color: oklch(var(--vintage-dark));
+    }
+    
+    .bg-vintage-dark-lighter {
+        background-color: oklch(var(--vintage-dark-lighter));
+    }
+    
+    .bg-vintage-gold {
+        background-color: oklch(var(--vintage-gold));
+    }
+    
+    .bg-vintage-glow {
+        background-color: oklch(var(--vintage-glow));
+    }
+    
+    .text-vintage-gold {
+        color: oklch(var(--vintage-gold));
+    }
+    
+    .text-vintage-ink {
+        color: oklch(var(--vintage-ink));
+    }
+    
+    .text-vintage-paper {
+        color: oklch(var(--vintage-paper));
+    }
+    
+    .font-handwritten {
+        font-family: 'Dawning of a New Day', cursive;
+        font-weight: 400;
+    }
+    
+    .font-script {
+        font-family: 'Lovers Quarrel', cursive;
+    }
+    
+    .bg-gradient-radial {
+        background: radial-gradient(circle, var(--tw-gradient-stops));
+    }
+    
+    .drop-shadow-glow {
+        filter: drop-shadow(0 0 20px oklch(var(--vintage-gold) / 0.6));
+    }
+    
+    /* Candlelight flicker animation */
+    @keyframes candle-flicker {
+        0%, 100% { opacity: 0.08; }
+        25% { opacity: 0.12; }
+        50% { opacity: 0.06; }
+        75% { opacity: 0.10; }
+    }
+    
+    .animate-candle-flicker {
+        animation: candle-flicker 4s ease-in-out infinite;
+    }
+    
+    /* Gentle floating animation */
+    @keyframes gentle-float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+    }
+    
+    .animate-gentle-float {
+        animation: gentle-float 3s ease-in-out infinite;
+    }
+    
+    /* Mailbox glow animation */
+    @keyframes mailbox-glow {
+        0%, 100% { filter: drop-shadow(0 0 10px oklch(var(--vintage-gold) / 0.3)); }
+        50% { filter: drop-shadow(0 0 30px oklch(var(--vintage-gold) / 0.6)); }
+    }
+    
+    .animate-mailbox-glow {
+        animation: mailbox-glow 2s ease-in-out infinite;
+    }
+    
+    /* Envelope slide animation */
+    @keyframes envelope-slide {
+        0% {
+            opacity: 0;
+            transform: translateY(-100px) scale(0.8);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+    
+    .animate-envelope-slide {
+        animation: envelope-slide 1s ease-out forwards;
+    }
+    
+    /* Letter unfold animation */
+    @keyframes letter-unfold {
+        0% {
+            opacity: 0;
+            transform: scale(0.5) rotateX(-90deg);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1) rotateX(0deg);
+        }
+    }
+    
+    .animate-letter-unfold {
+        animation: letter-unfold 1.2s ease-out forwards;
+        transform-style: preserve-3d;
+    }
+    
+    /* Ticket reveal animation */
+    @keyframes ticket-reveal {
+        0% {
+            transform: scale(0.8) rotate(-5deg);
+            opacity: 0.8;
+        }
+        100% {
+            transform: scale(1) rotate(0deg);
+            opacity: 1;
+        }
+    }
+    
+    .animate-ticket-reveal {
+        animation: ticket-reveal 1s ease-out forwards;
+    }
+    
+    /* Shimmer effect */
+    @keyframes shimmer {
+        0%, 100% {
+            filter: brightness(1) drop-shadow(0 0 20px oklch(var(--vintage-gold) / 0.4));
+        }
+        50% {
+            filter: brightness(1.2) drop-shadow(0 0 40px oklch(var(--vintage-gold) / 0.8));
+        }
+    }
+    
+    .animate-shimmer {
+        animation: shimmer 2s ease-in-out infinite;
+    }
+    
+    /* Glow animation */
+    @keyframes glow {
+        0%, 100% { opacity: 0.6; }
+        50% { opacity: 1; }
+    }
+    
+    .animate-glow {
+        animation: glow 1.5s ease-in-out infinite;
+    }
+    
+    /* Slow bounce */
+    @keyframes bounce-slow {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+    
+    .animate-bounce-slow {
+        animation: bounce-slow 2s ease-in-out infinite;
+    }
+    
+    /* Fade in */
+    @keyframes fade-in {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+    
+    .animate-fade-in {
+        animation: fade-in 1s ease-out forwards;
+    }
+}

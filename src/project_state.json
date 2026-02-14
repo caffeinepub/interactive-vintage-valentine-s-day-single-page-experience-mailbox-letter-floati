@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Build a fully interactive, moody vintage Valentine’s Day single-page experience with warm golden candlelit aesthetics, romantic ambient music, and interaction-required sections: mailbox/letter reveal, floating movie ticket catch-and-reveal, and scratch-off framed illustration reveal.",
+  "architectural_notes": [
+    "Single-page interactive, section-by-section narrative flow gated by user interactions (click/scroll/drag) to ensure no passive sections."
+  ],
+  "known_issues": [
+    "User reports prior build 'didn't work' and requests it 'works this time' (potential regression/robustness issue to address)."
+  ],
+  "isFixRequest": true,
+  "imageRequirements": "## Required Images\n- Candlelit vintage mailbox scene background illustration with warm golden tones, soft shadows, subtle vignette (mailbox-scene.dim_1920x1080.png)\n- Vintage envelope illustration with old-paper texture, readable blank area for overlay text (envelope.dim_1200x800.png)\n- Unfolded vintage letter paper illustration with old-paper texture and gentle wear (letter-paper.dim_1400x900.png)\n- Vintage movie ticket illustration with warm paper tone and ornamental edges (movie-ticket.dim_1000x500.png)\n- Vintage ornate gold frame illustration with candlelit highlights, centered opening for image (gold-frame.dim_1400x1000.png)\n- Scratch-off overlay texture (silver/gray latex) suitable for masking and erasing (scratch-overlay.dim_1400x1000.png)\n- Soft romantic illustrated-but-realistic couple selfie on sofa with warm candlelit glow matching the specified appearance details (couple-illustration.dim_1400x1000.png)\n- Old paper texture tile, seamless (paper-texture-tile.dim_512x512.png)",
+  "existing_features": [
+    {
+      "id": "feature-create-a-single-page-fully-interactive-valentine-s-day-experience-with-a-consistent-moody-vintage-romantic-aesthetic-warm-golden-tones-soft-shadows-old-paper-textures-subtle-flickering-candlelight-animations-and-slow-emotional-transitions-the-overall-vibe-must-also-feel-fun-cute-and-aesthetic-while-staying-vintage",
+      "title": "Create a single-page, fully interactive Valentine’s Day experience with a consistent moody, vintage, romantic aesthetic: warm golden tones, soft shadows, old-paper textures, subtle flickering candlelight animations, and slow emotional transitions. The overall vibe must also feel fun, cute, and aesthetic while staying vintage.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-the-opening-scene-a-dim-candlelit-setting-with-a-vintage-mailbox-centered-on-screen-and-subtle-ambient-romantic-instrumental-music-the-mailbox-must-gently-move-and-or-softly-glow-to-hint-that-it-is-clickable-on-click-a-letter-envelope-slowly-slides-out-the-envelope-must-show-exactly-to-my-bestie-the-user-must-click-the-envelope-to-open-it-then-the-letter-unfolds-with-a-soft-animation-and-displays-the-message-in-a-handwritten-style-font-exactly-as-provided-including-spelling-punctuation-line-breaks-and-emojis-after-the-message-is-revealed-and-readable-show-a-subtle-glowing-scroll-to-continue-indicator",
+      "title": "Implement the Opening Scene: a dim candlelit setting with a vintage mailbox centered on screen and subtle ambient romantic instrumental music. The mailbox must gently move and/or softly glow to hint that it is clickable. On click, a letter/envelope slowly slides out. The envelope must show exactly: \"To: My Bestie 🤍\". The user must click the envelope to open it, then the letter unfolds with a soft animation and displays the message in a handwritten-style font exactly as provided (including spelling, punctuation, line breaks, and emojis). After the message is revealed and readable, show a subtle glowing “Scroll to continue” indicator.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-the-second-interactive-section-a-vintage-movie-ticket-that-appears-when-the-user-scrolls-past-the-letter-section-the-ticket-must-float-drift-gently-around-the-screen-as-if-carried-by-air-the-user-must-click-the-moving-ticket-to-catch-it-stop-its-motion-on-successful-catch-the-ticket-enlarges-and-reveals-the-following-details-movie-night-february-14-2026-movie-tbd-time-10-pm-mt-underneath-add-the-romantic-line-front-row-seats-to-forever-with-you-include-a-gentle-glow-or-shimmer-effect-when-the-ticket-s-details-are-revealed",
+      "title": "Implement the second interactive section: a vintage movie ticket that appears when the user scrolls past the letter section. The ticket must float/drift gently around the screen as if carried by air. The user must click the moving ticket to “catch” it (stop its motion). On successful catch, the ticket enlarges and reveals the following details: \"🎬 Movie Night\", \"February 14, 2026\", \"Movie: TBD\", \"Time: 10 PM (MT)\". Underneath, add the romantic line: “Front row seats to forever with you.” Include a gentle glow or shimmer effect when the ticket’s details are revealed.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-the-third-interactive-section-a-candlelit-vintage-gold-picture-frame-with-an-image-area-covered-by-a-scratch-off-layer-lottery-ticket-style-the-user-must-drag-with-mouse-desktop-or-finger-mobile-to-scratch-off-the-overlay-and-reveal-the-image-underneath-the-revealed-image-must-be-a-soft-romantic-slightly-illustrated-but-realistic-comic-style-illustration-with-warm-candlelit-glow-and-intimate-vibe-matching-these-exact-character-details-both-in-their-20s-both-lighter-skin-he-has-a-shorter-beard-he-wears-a-dark-blue-sweater-he-wears-a-red-dastaar-sikh-turban-she-has-long-black-hair-no-bangs-brown-eyes-wearing-a-red-off-shoulder-full-sleeve-top-sitting-on-a-sofa-selfie-pose-she-smiles-with-teeth-he-smiles-without-showing-teeth-he-s-holding-her-in-his-arms",
+      "title": "Implement the third interactive section: a candlelit vintage gold picture frame with an image area covered by a scratch-off layer (lottery ticket style). The user must drag with mouse (desktop) or finger (mobile) to scratch off the overlay and reveal the image underneath. The revealed image must be a soft, romantic, slightly illustrated-but-realistic comic-style illustration with warm candlelit glow and intimate vibe, matching these exact character details: both in their 20s; both lighter skin; he has a shorter beard; he wears a dark blue sweater; he wears a red dastaar (Sikh turban); she has long black hair (no bangs), brown eyes, wearing a red off-shoulder full sleeve top; sitting on a sofa; selfie pose; she smiles with teeth; he smiles without showing teeth; he’s holding her in his arms.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-experience-is-robust-and-works-this-time-implement-asset-preloading-images-textures-audio-handle-mobile-desktop-input-properly-and-prevent-progression-state-bugs-the-app-must-run-without-runtime-errors-and-all-interactive-steps-must-be-reliably-repeatable-on-refresh",
+      "title": "Ensure the experience is robust and “works this time”: implement asset preloading (images, textures, audio), handle mobile/desktop input properly, and prevent progression-state bugs. The app must run without runtime errors, and all interactive steps must be reliably repeatable on refresh.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-the-required-generated-static-assets-to-the-frontend-and-render-them-locally-from-the-app-do-not-fetch-images-through-the-backend-place-generated-images-under-frontend-public-assets-generated-and-ensure-the-ui-uses-those-files-for-the-mailbox-scene-movie-ticket-frame-textures-and-the-revealed-illustration",
+      "title": "Add the required generated static assets to the frontend and render them locally from the app (do not fetch images through the backend). Place generated images under frontend/public/assets/generated and ensure the UI uses those files for the mailbox scene, movie ticket, frame, textures, and the revealed illustration.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Opening interactive mailbox scene: candlelit vintage setting with ambient romantic instrumental music; mailbox subtly glows/moves; click mailbox to slide out envelope; click envelope to open; unfold letter animation; handwritten-style font; exact provided message text; 'Scroll to continue' indicator after reading",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Interactive floating vintage movie ticket section: ticket drifts around screen; user must click to catch/stop it; on click it enlarges and reveals event details (Movie Night, Feb 14 2026, Movie TBD, 10 PM MT) plus romantic line; add gentle glow/shimmer reveal",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Interactive scratch-off gold picture frame: scratch-off overlay (drag mouse/finger to reveal) over candlelit framed image; reveals romantic comic-style illustration with specified couple appearance/outfits/pose and warm candlelit glow",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Global experience requirements: every section requires user interaction (click/drag/scroll/hover/reveal); smooth animations, soft fades, slow emotional transitions; overall mood fun/cute/aesthetic vintage with warm golden tones, soft shadows, old-paper textures, subtle flickering candle animations; immersive pacing like unfolding a private love story",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Interactive vintage Valentine’s Day single-page experience (mailbox letter, floating ticket catch, scratch-off frame)",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

@@ -1,0 +1,85 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-14T00:34:54.631Z",
+  "summary": "Diff adds a new 3-scene Valentine single-page flow (mailbox → ticket → scratch frame) with preloading, ambient audio on first interaction, and scratch-off canvas. However, there is an unrequested backend change and several key text/visual acceptance criteria cannot be verified from the truncated diffs (notably exact envelope/ticket text and reveal effects).",
+  "missing_requirements": [
+    {
+      "id": "REQ-2",
+      "requirement": "Envelope must show exactly: \"To: My Bestie 🤍\".",
+      "reason": "OpeningMailboxScene is truncated right where the envelope overlay text would be rendered, so the exact required string cannot be confirmed from the provided diff summary.",
+      "evidence": [
+        "frontend/src/components/valentine/OpeningMailboxScene.tsx (truncated)"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "requirement": "Letter unfolds with a soft animation and displays the message in a handwritten-style font exactly as provided (including spelling, punctuation, line breaks, and emojis).",
+      "reason": "Although LETTER_CONTENT is provided, the OpeningMailboxScene rendering of the unfolded letter (including animation usage, exact formatting, and ensuring it is displayed exactly) is not visible due to truncation.",
+      "evidence": [
+        "frontend/src/components/valentine/LetterContent.ts",
+        "frontend/src/components/valentine/OpeningMailboxScene.tsx (truncated)"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "requirement": "On successful catch, the ticket enlarges and reveals the exact required details and includes a gentle glow/shimmer effect when details are revealed.",
+      "reason": "MovieTicketScene is truncated immediately before the 'caught ticket' reveal UI; the presence of the exact text lines and the shimmer/glow effect cannot be verified from the provided diff summary.",
+      "evidence": [
+        "frontend/src/components/valentine/MovieTicketScene.tsx (truncated)"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "requirement": "Add the required generated static assets under frontend/public/assets/generated and ensure the UI uses those files.",
+      "reason": "The code references the required generated asset paths, but the diff summary does not show the actual image files being added under frontend/public/assets/generated (and notes omitted added files), so the presence of the required assets cannot be confirmed.",
+      "evidence": [
+        "frontend/src/components/valentine/assets.ts",
+        "File diff summary: \"Omitted files due to limits: added=2\""
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Backend was changed/added despite the request stating backend changes should not be needed (single Motoko actor added as an empty actor).",
+      "reason": "BuildRequest explicitly says the build should not require backend changes, but a backend file was added.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "description": "Use of lucide-react icon components for UI (Heart, ChevronDown) which is not requested in the BuildRequest.",
+      "reason": "The BuildRequest does not ask for adding or using an icon library; the diff shows direct imports from lucide-react for UI elements.",
+      "evidence": [
+        "frontend/src/components/valentine/LoadingOverlay.tsx",
+        "frontend/src/components/valentine/OpeningMailboxScene.tsx",
+        "frontend/src/components/valentine/MovieTicketScene.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.68,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/valentine/LetterContent.ts",
+    "frontend/src/components/valentine/LoadingOverlay.tsx",
+    "frontend/src/components/valentine/MovieTicketScene.tsx",
+    "frontend/src/components/valentine/OpeningMailboxScene.tsx",
+    "frontend/src/components/valentine/ScratchFrameScene.tsx",
+    "frontend/src/components/valentine/assets.ts",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useAmbientAudio.ts",
+    "frontend/src/hooks/useAssetPreloader.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/hooks/useScratchOffCanvas.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}
