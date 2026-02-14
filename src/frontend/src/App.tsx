@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { OpeningMailboxScene } from './components/valentine/OpeningMailboxScene';
 import { MovieTicketScene } from './components/valentine/MovieTicketScene';
 import { ScratchFrameScene } from './components/valentine/ScratchFrameScene';
@@ -6,17 +6,13 @@ import { LoadingOverlay } from './components/valentine/LoadingOverlay';
 import { useAssetPreloader } from './hooks/useAssetPreloader';
 
 export default function App() {
-  const [currentScene, setCurrentScene] = useState<'mailbox' | 'ticket' | 'frame'>('mailbox');
   const [mailboxComplete, setMailboxComplete] = useState(false);
   const [ticketComplete, setTicketComplete] = useState(false);
   const { isLoading, progress } = useAssetPreloader();
 
-  // Reset state on mount to ensure fresh experience
-  useEffect(() => {
-    setCurrentScene('mailbox');
-    setMailboxComplete(false);
-    setTicketComplete(false);
-  }, []);
+  const mailboxRef = useRef<HTMLDivElement>(null);
+  const ticketRef = useRef<HTMLDivElement>(null);
+  const frameRef = useRef<HTMLDivElement>(null);
 
   const handleMailboxComplete = () => {
     setMailboxComplete(true);
@@ -26,16 +22,12 @@ export default function App() {
     setTicketComplete(true);
   };
 
-  const handleScrollToTicket = () => {
-    if (mailboxComplete) {
-      setCurrentScene('ticket');
-    }
+  const scrollToTicket = () => {
+    ticketRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
-  const handleScrollToFrame = () => {
-    if (ticketComplete) {
-      setCurrentScene('frame');
-    }
+  const scrollToFrame = () => {
+    frameRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   if (isLoading) {
@@ -43,24 +35,30 @@ export default function App() {
   }
 
   return (
-    <div className="relative w-full min-h-screen overflow-x-hidden bg-vintage-dark">
-      <OpeningMailboxScene
-        isActive={currentScene === 'mailbox'}
-        onComplete={handleMailboxComplete}
-        onScrollNext={handleScrollToTicket}
-      />
-      {mailboxComplete && (
+    <div className="relative w-full min-h-screen overflow-x-hidden bg-fun-pink-light">
+      {/* Mailbox Scene - always mounted */}
+      <div ref={mailboxRef}>
+        <OpeningMailboxScene
+          onComplete={handleMailboxComplete}
+          onScrollNext={scrollToTicket}
+          showContinue={mailboxComplete}
+        />
+      </div>
+
+      {/* Ticket Scene - always mounted, but locked until mailbox complete */}
+      <div ref={ticketRef}>
         <MovieTicketScene
-          isActive={currentScene === 'ticket'}
+          isUnlocked={mailboxComplete}
           onComplete={handleTicketComplete}
-          onScrollNext={handleScrollToFrame}
+          onScrollNext={scrollToFrame}
+          showContinue={ticketComplete}
         />
-      )}
-      {ticketComplete && (
-        <ScratchFrameScene
-          isActive={currentScene === 'frame'}
-        />
-      )}
+      </div>
+
+      {/* Frame Scene - always mounted, but locked until ticket complete */}
+      <div ref={frameRef}>
+        <ScratchFrameScene isUnlocked={ticketComplete} />
+      </div>
     </div>
   );
 }

@@ -1,15 +1,19 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 3,
-  "summary": "Build a fully interactive, moody vintage Valentine’s Day single-page experience with warm golden candlelit aesthetics, romantic ambient music, and interaction-required sections: mailbox/letter reveal, floating movie ticket catch-and-reveal, and scratch-off framed illustration reveal.",
+  "projectStateVersion": 5,
+  "summary": "Shift the experience direction from moody vintage to a fun, more playful Valentine’s Day single-page interactive experience while fixing major usability blockers (scroll not working; letter not readable; inability to scroll after letter).",
   "architectural_notes": [
-    "Single-page interactive, section-by-section narrative flow gated by user interactions (click/scroll/drag) to ensure no passive sections."
+    "Single-page interactive, section-by-section narrative flow gated by user interactions (click/scroll/drag) to ensure no passive sections.",
+    "Do not hard-lock scrolling via CSS/JS; if progression gating is needed, implement via section overlays/prompts without disabling page scroll.",
+    "Ensure letter content is readable: adequate contrast, font size/line-height, and responsive layout so message can be read on mobile and desktop."
   ],
   "known_issues": [
-    "User reports prior build 'didn't work' and requests it 'works this time' (potential regression/robustness issue to address)."
+    "User reports prior build 'didn't work' and requests it 'works this time' (potential regression/robustness issue to address).",
+    "Critical: user cannot scroll (initially and/or after letter section), blocking progression.",
+    "Critical: letter content is not readable (layout/contrast/font sizing issue suspected).",
+    "User rejects current 'vintage' vibe; requested a fun/playful vibe instead."
   ],
   "isFixRequest": true,
-  "imageRequirements": "## Required Images\n- Candlelit vintage mailbox scene background illustration with warm golden tones, soft shadows, subtle vignette (mailbox-scene.dim_1920x1080.png)\n- Vintage envelope illustration with old-paper texture, readable blank area for overlay text (envelope.dim_1200x800.png)\n- Unfolded vintage letter paper illustration with old-paper texture and gentle wear (letter-paper.dim_1400x900.png)\n- Vintage movie ticket illustration with warm paper tone and ornamental edges (movie-ticket.dim_1000x500.png)\n- Vintage ornate gold frame illustration with candlelit highlights, centered opening for image (gold-frame.dim_1400x1000.png)\n- Scratch-off overlay texture (silver/gray latex) suitable for masking and erasing (scratch-overlay.dim_1400x1000.png)\n- Soft romantic illustrated-but-realistic couple selfie on sofa with warm candlelit glow matching the specified appearance details (couple-illustration.dim_1400x1000.png)\n- Old paper texture tile, seamless (paper-texture-tile.dim_512x512.png)",
   "existing_features": [
     {
       "id": "feature-create-a-single-page-fully-interactive-valentine-s-day-experience-with-a-consistent-moody-vintage-romantic-aesthetic-warm-golden-tones-soft-shadows-old-paper-textures-subtle-flickering-candlelight-animations-and-slow-emotional-transitions-the-overall-vibe-must-also-feel-fun-cute-and-aesthetic-while-staying-vintage",
@@ -58,6 +62,38 @@
         "REQ-6"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-fix-page-scrolling-and-progression-so-the-user-can-always-scroll-through-the-single-page-experience-mailbox-letter-movie-ticket-scratch-frame-on-desktop-and-mobile-without-getting-stuck-before-or-after-the-letter-is-revealed",
+      "title": "Fix page scrolling and progression so the user can always scroll through the single-page experience (mailbox/letter → movie ticket → scratch frame) on desktop and mobile, without getting stuck before or after the letter is revealed.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-make-the-letter-fully-readable-across-devices-by-improving-layout-sizing-and-contrast-while-preserving-the-exact-letter-text-including-line-breaks-and-emojis-from-frontend-src-components-valentine-lettercontent-ts",
+      "title": "Make the letter fully readable across devices by improving layout, sizing, and contrast while preserving the exact letter text (including line breaks and emojis) from frontend/src/components/valentine/LetterContent.ts.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-change-the-overall-visual-vibe-from-moody-vintage-to-fun-playful-valentine-s-style-across-all-scenes-mailbox-ticket-scratch-frame-by-updating-global-styles-colors-typography-background-treatments-animations-and-scene-styling-to-remove-the-heavy-vintage-look",
+      "title": "Change the overall visual vibe from moody vintage to fun/playful Valentine’s style across all scenes (mailbox, ticket, scratch frame) by updating global styles (colors/typography/background treatments/animations) and scene styling to remove the heavy vintage look.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-scroll-to-continue-ux-so-it-works-reliably-once-a-section-is-completed-provide-a-dependable-way-to-proceed-scroll-detection-that-works-with-the-actual-document-flow-and-or-a-clear-continue-affordance-and-ensure-the-indicator-never-appears-when-progression-is-blocked",
+      "title": "Update the “Scroll to continue” UX so it works reliably: once a section is completed, provide a dependable way to proceed (scroll detection that works with the actual document flow and/or a clear continue affordance) and ensure the indicator never appears when progression is blocked.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -82,6 +118,18 @@
     {
       "id": "AR-4",
       "summary": "Global experience requirements: every section requires user interaction (click/drag/scroll/hover/reveal); smooth animations, soft fades, slow emotional transitions; overall mood fun/cute/aesthetic vintage with warm golden tones, soft shadows, old-paper textures, subtle flickering candle animations; immersive pacing like unfolding a private love story",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Revise overall art direction/vibe from vintage to FUN/playful (less/no vintage styling) while preserving interactive structure; adjust colors/typography/animations/music to match fun tone and improve readability",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Fix critical UX bugs: scrolling not working; letter text not readable; ensure user can scroll/progress after letter reveal across devices/browsers",
       "reqIds": [],
       "status": "pending"
     }

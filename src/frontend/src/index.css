@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Dawning+of+a+New+Day&family=Lovers+Quarrel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Pacifico&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,35 +6,39 @@
 
 @layer base {
     :root {
-        --radius: 0.625rem;
+        --radius: 1rem;
         
-        /* Vintage Valentine's color palette */
-        --vintage-dark: 20 0.02 30;
-        --vintage-dark-lighter: 30 0.02 30;
-        --vintage-gold: 75 0.15 60;
-        --vintage-ink: 25 0.03 30;
-        --vintage-glow: 65 0.2 50;
-        --vintage-paper: 90 0.05 60;
+        /* Fun playful Valentine's color palette */
+        --fun-pink-light: 95 0.08 10;
+        --fun-pink: 85 0.15 10;
+        --fun-red-light: 90 0.12 15;
+        --fun-red: 60 0.20 15;
+        --fun-red-dark: 50 0.22 15;
+        --fun-purple-light: 90 0.10 300;
+        --fun-purple: 70 0.15 300;
+        --fun-gold: 80 0.12 60;
+        --fun-gold-light: 90 0.08 60;
+        --fun-text: 30 0.05 15;
         
-        --background: var(--vintage-dark);
-        --foreground: var(--vintage-paper);
-        --card: 25 0.02 30;
-        --card-foreground: var(--vintage-paper);
-        --popover: 25 0.02 30;
-        --popover-foreground: var(--vintage-paper);
-        --primary: var(--vintage-gold);
-        --primary-foreground: var(--vintage-dark);
-        --secondary: 35 0.03 30;
-        --secondary-foreground: var(--vintage-paper);
-        --muted: 35 0.03 30;
-        --muted-foreground: 60 0.05 50;
-        --accent: var(--vintage-glow);
-        --accent-foreground: var(--vintage-dark);
+        --background: var(--fun-pink-light);
+        --foreground: var(--fun-text);
+        --card: 98 0.02 10;
+        --card-foreground: var(--fun-text);
+        --popover: 98 0.02 10;
+        --popover-foreground: var(--fun-text);
+        --primary: var(--fun-red);
+        --primary-foreground: 98 0 0;
+        --secondary: var(--fun-purple);
+        --secondary-foreground: 98 0 0;
+        --muted: 95 0.05 10;
+        --muted-foreground: 60 0.05 15;
+        --accent: var(--fun-pink);
+        --accent-foreground: var(--fun-text);
         --destructive: 0.577 0.245 27.325;
         --destructive-foreground: 0.985 0 0;
-        --border: 40 0.03 30;
-        --input: 40 0.03 30;
-        --ring: var(--vintage-gold);
+        --border: 90 0.05 10;
+        --input: 90 0.05 10;
+        --ring: var(--fun-red);
     }
 
     * {
@@ -42,90 +46,109 @@
     }
     
     body {
-        @apply bg-vintage-dark text-foreground;
-        font-family: 'Georgia', serif;
+        @apply bg-fun-pink-light text-foreground;
+        font-family: 'Fredoka', sans-serif;
     }
 }
 
 @layer utilities {
-    .bg-vintage-dark {
-        background-color: oklch(var(--vintage-dark));
+    .bg-fun-pink-light {
+        background-color: oklch(var(--fun-pink-light));
     }
     
-    .bg-vintage-dark-lighter {
-        background-color: oklch(var(--vintage-dark-lighter));
+    .bg-fun-pink {
+        background-color: oklch(var(--fun-pink));
     }
     
-    .bg-vintage-gold {
-        background-color: oklch(var(--vintage-gold));
+    .bg-fun-red-light {
+        background-color: oklch(var(--fun-red-light));
     }
     
-    .bg-vintage-glow {
-        background-color: oklch(var(--vintage-glow));
+    .bg-fun-red {
+        background-color: oklch(var(--fun-red));
     }
     
-    .text-vintage-gold {
-        color: oklch(var(--vintage-gold));
+    .bg-fun-red-dark {
+        background-color: oklch(var(--fun-red-dark));
     }
     
-    .text-vintage-ink {
-        color: oklch(var(--vintage-ink));
+    .bg-fun-purple-light {
+        background-color: oklch(var(--fun-purple-light));
     }
     
-    .text-vintage-paper {
-        color: oklch(var(--vintage-paper));
+    .bg-fun-purple {
+        background-color: oklch(var(--fun-purple));
     }
     
-    .font-handwritten {
-        font-family: 'Dawning of a New Day', cursive;
-        font-weight: 400;
+    .bg-fun-gold {
+        background-color: oklch(var(--fun-gold));
+    }
+    
+    .bg-fun-gold-light {
+        background-color: oklch(var(--fun-gold-light));
+    }
+    
+    .text-fun-pink {
+        color: oklch(var(--fun-pink));
+    }
+    
+    .text-fun-red {
+        color: oklch(var(--fun-red));
+    }
+    
+    .text-fun-red-dark {
+        color: oklch(var(--fun-red-dark));
+    }
+    
+    .text-fun-purple {
+        color: oklch(var(--fun-purple));
+    }
+    
+    .text-fun-text {
+        color: oklch(var(--fun-text));
+    }
+    
+    .font-playful {
+        font-family: 'Fredoka', sans-serif;
+        font-weight: 500;
     }
     
     .font-script {
-        font-family: 'Lovers Quarrel', cursive;
+        font-family: 'Pacifico', cursive;
     }
     
-    .bg-gradient-radial {
-        background: radial-gradient(circle, var(--tw-gradient-stops));
+    .shadow-fun {
+        box-shadow: 0 10px 30px -5px rgba(255, 105, 135, 0.3);
     }
     
-    .drop-shadow-glow {
-        filter: drop-shadow(0 0 20px oklch(var(--vintage-gold) / 0.6));
+    .shadow-fun-xl {
+        box-shadow: 0 20px 50px -10px rgba(255, 105, 135, 0.4);
     }
     
-    /* Candlelight flicker animation */
-    @keyframes candle-flicker {
-        0%, 100% { opacity: 0.08; }
-        25% { opacity: 0.12; }
-        50% { opacity: 0.06; }
-        75% { opacity: 0.10; }
+    .drop-shadow-fun {
+        filter: drop-shadow(0 10px 20px rgba(255, 105, 135, 0.3));
     }
-    
-    .animate-candle-flicker {
-        animation: candle-flicker 4s ease-in-out infinite;
-    }
-    
-    /* Gentle floating animation */
+}
+
+@layer utilities {
     @keyframes gentle-float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
+        0%, 100% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
     }
     
-    .animate-gentle-float {
-        animation: gentle-float 3s ease-in-out infinite;
+    @keyframes gentle-bounce {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
     }
     
-    /* Mailbox glow animation */
-    @keyframes mailbox-glow {
-        0%, 100% { filter: drop-shadow(0 0 10px oklch(var(--vintage-gold) / 0.3)); }
-        50% { filter: drop-shadow(0 0 30px oklch(var(--vintage-gold) / 0.6)); }
-    }
-    
-    .animate-mailbox-glow {
-        animation: mailbox-glow 2s ease-in-out infinite;
-    }
-    
-    /* Envelope slide animation */
     @keyframes envelope-slide {
         0% {
             opacity: 0;
@@ -137,15 +160,10 @@
         }
     }
     
-    .animate-envelope-slide {
-        animation: envelope-slide 1s ease-out forwards;
-    }
-    
-    /* Letter unfold animation */
     @keyframes letter-unfold {
         0% {
             opacity: 0;
-            transform: scale(0.5) rotateX(-90deg);
+            transform: scale(0.8) rotateX(-90deg);
         }
         100% {
             opacity: 1;
@@ -153,72 +171,108 @@
         }
     }
     
-    .animate-letter-unfold {
-        animation: letter-unfold 1.2s ease-out forwards;
-        transform-style: preserve-3d;
-    }
-    
-    /* Ticket reveal animation */
     @keyframes ticket-reveal {
         0% {
-            transform: scale(0.8) rotate(-5deg);
-            opacity: 0.8;
+            opacity: 0;
+            transform: scale(0.5) rotate(-10deg);
         }
         100% {
+            opacity: 1;
             transform: scale(1) rotate(0deg);
+        }
+    }
+    
+    @keyframes bounce-slow {
+        0%, 100% {
+            transform: translateY(0) translateX(-50%);
+        }
+        50% {
+            transform: translateY(-10px) translateX(-50%);
+        }
+    }
+    
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+        }
+        100% {
             opacity: 1;
         }
+    }
+    
+    @keyframes float-slow {
+        0%, 100% {
+            transform: translate(0, 0) rotate(0deg);
+        }
+        33% {
+            transform: translate(30px, -30px) rotate(5deg);
+        }
+        66% {
+            transform: translate(-20px, 20px) rotate(-5deg);
+        }
+    }
+    
+    @keyframes float-medium {
+        0%, 100% {
+            transform: translate(0, 0) rotate(0deg);
+        }
+        33% {
+            transform: translate(-25px, 25px) rotate(-3deg);
+        }
+        66% {
+            transform: translate(25px, -25px) rotate(3deg);
+        }
+    }
+    
+    @keyframes float-fast {
+        0%, 100% {
+            transform: translate(0, 0) rotate(0deg);
+        }
+        33% {
+            transform: translate(20px, 30px) rotate(4deg);
+        }
+        66% {
+            transform: translate(-30px, -20px) rotate(-4deg);
+        }
+    }
+    
+    .animate-gentle-float {
+        animation: gentle-float 3s ease-in-out infinite;
+    }
+    
+    .animate-gentle-bounce {
+        animation: gentle-bounce 2s ease-in-out infinite;
+    }
+    
+    .animate-envelope-slide {
+        animation: envelope-slide 0.8s ease-out forwards;
+    }
+    
+    .animate-letter-unfold {
+        animation: letter-unfold 1s ease-out forwards;
     }
     
     .animate-ticket-reveal {
         animation: ticket-reveal 1s ease-out forwards;
     }
     
-    /* Shimmer effect */
-    @keyframes shimmer {
-        0%, 100% {
-            filter: brightness(1) drop-shadow(0 0 20px oklch(var(--vintage-gold) / 0.4));
-        }
-        50% {
-            filter: brightness(1.2) drop-shadow(0 0 40px oklch(var(--vintage-gold) / 0.8));
-        }
-    }
-    
-    .animate-shimmer {
-        animation: shimmer 2s ease-in-out infinite;
-    }
-    
-    /* Glow animation */
-    @keyframes glow {
-        0%, 100% { opacity: 0.6; }
-        50% { opacity: 1; }
-    }
-    
-    .animate-glow {
-        animation: glow 1.5s ease-in-out infinite;
-    }
-    
-    /* Slow bounce */
-    @keyframes bounce-slow {
-        0%, 100% {
-            transform: translateY(0);
-        }
-        50% {
-            transform: translateY(-10px);
-        }
-    }
-    
     .animate-bounce-slow {
         animation: bounce-slow 2s ease-in-out infinite;
     }
     
-    /* Fade in */
-    @keyframes fade-in {
-        0% { opacity: 0; }
-        100% { opacity: 1; }
-    }
-    
     .animate-fade-in {
         animation: fade-in 1s ease-out forwards;
+    }
+    
+    .animate-float-slow {
+        animation: float-slow 20s ease-in-out infinite;
+    }
+    
+    .animate-float-medium {
+        animation: float-medium 15s ease-in-out infinite;
+    }
+    
+    .animate-float-fast {
+        animation: float-fast 10s ease-in-out infinite;
     }
 }

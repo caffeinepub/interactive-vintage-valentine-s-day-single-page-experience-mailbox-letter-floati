@@ -2,10 +2,53 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-create-a-single-page-fully-interactive-valentine-s-day-experience-with-a-consistent-moody-vintage-romantic-aesthetic-warm-golden-tones-soft-shadows-old-paper-textures-subtle-flickering-candlelight-animations-and-slow-emotional-transitions-the-overall-vibe-must-also-feel-fun-cute-and-aesthetic-while-staying-vintage",
-      "featureTitle": "Create a single-page, fully interactive Valentine’s Day experience with a consistent moody, vintage, romantic aesthetic: warm golden tones, soft shadows, old-paper textures, subtle flickering candlelight animations, and slow emotional transitions. The overall vibe must also feel fun, cute, and aesthetic while staying vintage.",
+      "featureId": "feature-fix-page-scrolling-and-progression-so-the-user-can-always-scroll-through-the-single-page-experience-mailbox-letter-movie-ticket-scratch-frame-on-desktop-and-mobile-without-getting-stuck-before-or-after-the-letter-is-revealed",
+      "featureTitle": "Fix page scrolling and progression so the user can always scroll through the single-page experience (mailbox/letter → movie ticket → scratch frame) on desktop and mobile, without getting stuck before or after the letter is revealed.",
       "files": [
         "frontend/src/App.tsx",
+        "frontend/src/components/valentine/MovieTicketScene.tsx",
+        "frontend/src/components/valentine/OpeningMailboxScene.tsx",
+        "frontend/src/components/valentine/ScratchFrameScene.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-make-the-letter-fully-readable-across-devices-by-improving-layout-sizing-and-contrast-while-preserving-the-exact-letter-text-including-line-breaks-and-emojis-from-frontend-src-components-valentine-lettercontent-ts",
+      "featureTitle": "Make the letter fully readable across devices by improving layout, sizing, and contrast while preserving the exact letter text (including line breaks and emojis) from frontend/src/components/valentine/LetterContent.ts.",
+      "files": [
+        "frontend/src/components/valentine/OpeningMailboxScene.tsx",
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-change-the-overall-visual-vibe-from-moody-vintage-to-fun-playful-valentine-s-style-across-all-scenes-mailbox-ticket-scratch-frame-by-updating-global-styles-colors-typography-background-treatments-animations-and-scene-styling-to-remove-the-heavy-vintage-look",
+      "featureTitle": "Change the overall visual vibe from moody vintage to fun/playful Valentine’s style across all scenes (mailbox, ticket, scratch frame) by updating global styles (colors/typography/background treatments/animations) and scene styling to remove the heavy vintage look.",
+      "files": [
+        "frontend/src/components/valentine/LoadingOverlay.tsx",
+        "frontend/src/components/valentine/MovieTicketScene.tsx",
+        "frontend/src/components/valentine/OpeningMailboxScene.tsx",
+        "frontend/src/components/valentine/ScratchFrameScene.tsx",
         "frontend/src/index.css",
         "frontend/tailwind.config.js"
       ],
@@ -17,97 +60,18 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-1"
+        "REQ-9"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-implement-the-opening-scene-a-dim-candlelit-setting-with-a-vintage-mailbox-centered-on-screen-and-subtle-ambient-romantic-instrumental-music-the-mailbox-must-gently-move-and-or-softly-glow-to-hint-that-it-is-clickable-on-click-a-letter-envelope-slowly-slides-out-the-envelope-must-show-exactly-to-my-bestie-the-user-must-click-the-envelope-to-open-it-then-the-letter-unfolds-with-a-soft-animation-and-displays-the-message-in-a-handwritten-style-font-exactly-as-provided-including-spelling-punctuation-line-breaks-and-emojis-after-the-message-is-revealed-and-readable-show-a-subtle-glowing-scroll-to-continue-indicator",
-      "featureTitle": "Implement the Opening Scene: a dim candlelit setting with a vintage mailbox centered on screen and subtle ambient romantic instrumental music. The mailbox must gently move and/or softly glow to hint that it is clickable. On click, a letter/envelope slowly slides out. The envelope must show exactly: \"To: My Bestie 🤍\". The user must click the envelope to open it, then the letter unfolds with a soft animation and displays the message in a handwritten-style font exactly as provided (including spelling, punctuation, line breaks, and emojis). After the message is revealed and readable, show a subtle glowing “Scroll to continue” indicator.",
-      "files": [
-        "frontend/src/components/valentine/LetterContent.ts",
-        "frontend/src/components/valentine/OpeningMailboxScene.tsx",
-        "frontend/src/hooks/useAmbientAudio.ts"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-2"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-implement-the-second-interactive-section-a-vintage-movie-ticket-that-appears-when-the-user-scrolls-past-the-letter-section-the-ticket-must-float-drift-gently-around-the-screen-as-if-carried-by-air-the-user-must-click-the-moving-ticket-to-catch-it-stop-its-motion-on-successful-catch-the-ticket-enlarges-and-reveals-the-following-details-movie-night-february-14-2026-movie-tbd-time-10-pm-mt-underneath-add-the-romantic-line-front-row-seats-to-forever-with-you-include-a-gentle-glow-or-shimmer-effect-when-the-ticket-s-details-are-revealed",
-      "featureTitle": "Implement the second interactive section: a vintage movie ticket that appears when the user scrolls past the letter section. The ticket must float/drift gently around the screen as if carried by air. The user must click the moving ticket to “catch” it (stop its motion). On successful catch, the ticket enlarges and reveals the following details: \"🎬 Movie Night\", \"February 14, 2026\", \"Movie: TBD\", \"Time: 10 PM (MT)\". Underneath, add the romantic line: “Front row seats to forever with you.” Include a gentle glow or shimmer effect when the ticket’s details are revealed.",
+      "featureId": "feature-update-the-scroll-to-continue-ux-so-it-works-reliably-once-a-section-is-completed-provide-a-dependable-way-to-proceed-scroll-detection-that-works-with-the-actual-document-flow-and-or-a-clear-continue-affordance-and-ensure-the-indicator-never-appears-when-progression-is-blocked",
+      "featureTitle": "Update the “Scroll to continue” UX so it works reliably: once a section is completed, provide a dependable way to proceed (scroll detection that works with the actual document flow and/or a clear continue affordance) and ensure the indicator never appears when progression is blocked.",
       "files": [
         "frontend/src/App.tsx",
-        "frontend/src/components/valentine/MovieTicketScene.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-3"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-implement-the-third-interactive-section-a-candlelit-vintage-gold-picture-frame-with-an-image-area-covered-by-a-scratch-off-layer-lottery-ticket-style-the-user-must-drag-with-mouse-desktop-or-finger-mobile-to-scratch-off-the-overlay-and-reveal-the-image-underneath-the-revealed-image-must-be-a-soft-romantic-slightly-illustrated-but-realistic-comic-style-illustration-with-warm-candlelit-glow-and-intimate-vibe-matching-these-exact-character-details-both-in-their-20s-both-lighter-skin-he-has-a-shorter-beard-he-wears-a-dark-blue-sweater-he-wears-a-red-dastaar-sikh-turban-she-has-long-black-hair-no-bangs-brown-eyes-wearing-a-red-off-shoulder-full-sleeve-top-sitting-on-a-sofa-selfie-pose-she-smiles-with-teeth-he-smiles-without-showing-teeth-he-s-holding-her-in-his-arms",
-      "featureTitle": "Implement the third interactive section: a candlelit vintage gold picture frame with an image area covered by a scratch-off layer (lottery ticket style). The user must drag with mouse (desktop) or finger (mobile) to scratch off the overlay and reveal the image underneath. The revealed image must be a soft, romantic, slightly illustrated-but-realistic comic-style illustration with warm candlelit glow and intimate vibe, matching these exact character details: both in their 20s; both lighter skin; he has a shorter beard; he wears a dark blue sweater; he wears a red dastaar (Sikh turban); she has long black hair (no bangs), brown eyes, wearing a red off-shoulder full sleeve top; sitting on a sofa; selfie pose; she smiles with teeth; he smiles without showing teeth; he’s holding her in his arms.",
-      "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/components/valentine/ScratchFrameScene.tsx",
-        "frontend/src/hooks/useScratchOffCanvas.ts"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-4"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-ensure-the-experience-is-robust-and-works-this-time-implement-asset-preloading-images-textures-audio-handle-mobile-desktop-input-properly-and-prevent-progression-state-bugs-the-app-must-run-without-runtime-errors-and-all-interactive-steps-must-be-reliably-repeatable-on-refresh",
-      "featureTitle": "Ensure the experience is robust and “works this time”: implement asset preloading (images, textures, audio), handle mobile/desktop input properly, and prevent progression-state bugs. The app must run without runtime errors, and all interactive steps must be reliably repeatable on refresh.",
-      "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/components/valentine/LoadingOverlay.tsx",
-        "frontend/src/hooks/useAssetPreloader.ts"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-5"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-the-required-generated-static-assets-to-the-frontend-and-render-them-locally-from-the-app-do-not-fetch-images-through-the-backend-place-generated-images-under-frontend-public-assets-generated-and-ensure-the-ui-uses-those-files-for-the-mailbox-scene-movie-ticket-frame-textures-and-the-revealed-illustration",
-      "featureTitle": "Add the required generated static assets to the frontend and render them locally from the app (do not fetch images through the backend). Place generated images under frontend/public/assets/generated and ensure the UI uses those files for the mailbox scene, movie ticket, frame, textures, and the revealed illustration.",
-      "files": [
+        "frontend/src/components/valentine/ContinuePrompt.tsx",
         "frontend/src/components/valentine/MovieTicketScene.tsx",
-        "frontend/src/components/valentine/OpeningMailboxScene.tsx",
-        "frontend/src/components/valentine/ScratchFrameScene.tsx",
-        "frontend/src/components/valentine/assets.ts"
+        "frontend/src/components/valentine/OpeningMailboxScene.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -117,7 +81,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-6"
+        "REQ-10"
       ],
       "confidence": "high"
     }
