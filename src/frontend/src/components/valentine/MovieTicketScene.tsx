@@ -92,7 +92,7 @@ export function MovieTicketScene({ isUnlocked, onComplete, onScrollNext, showCon
           <div className="bg-white rounded-2xl shadow-fun p-6 animate-gentle-float">
             <div className="text-7xl">🎟️</div>
           </div>
-          <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-fun-red font-playful text-lg animate-pulse whitespace-nowrap">
+          <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-gray-900 font-playful text-lg animate-pulse whitespace-nowrap">
             Catch me!
           </div>
         </button>
@@ -102,14 +102,11 @@ export function MovieTicketScene({ isUnlocked, onComplete, onScrollNext, showCon
       {ticketCaught && (
         <div className="relative z-30 animate-ticket-reveal max-w-[90vw] w-full px-4">
           <div className="bg-white rounded-3xl shadow-fun-xl p-8 md:p-12 max-w-2xl mx-auto">
-            <div className="text-center text-fun-text font-playful">
+            <div className="text-center font-playful">
               <div className="text-6xl md:text-7xl mb-6">🎬 Movie Night</div>
-              <div className="text-2xl md:text-3xl mb-3 text-fun-red font-bold">February 14, 2026</div>
-              <div className="text-xl md:text-2xl mb-2">Movie: TBD</div>
-              <div className="text-xl md:text-2xl mb-8">Time: 10 PM (MT)</div>
-              <div className="text-lg md:text-xl italic text-fun-purple mt-8 border-t-2 border-fun-pink pt-6">
-                "Front row seats to forever with you."
-              </div>
+              <div className="text-2xl md:text-3xl mb-3 text-gray-900 font-bold">February 14, 2026</div>
+              <div className="text-xl md:text-2xl mb-2 text-gray-800">Movie: TBD</div>
+              <div className="text-xl md:text-2xl text-gray-800">Time: 10 PM (MT)</div>
             </div>
           </div>
         </div>

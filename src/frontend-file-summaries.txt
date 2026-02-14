@@ -1,9 +1,9 @@
 {
   "frontend/src/App.tsx": "Main application component that orchestrates three stacked Valentine's scenes (mailbox, ticket, frame) with refs for smooth scrolling and reliable progression between sections.",
-  "frontend/src/components/valentine/OpeningMailboxScene.tsx": "Interactive mailbox scene with click-to-reveal envelope and letter in bright playful Valentine's theme, featuring improved letter readability on white background with clear typography.",
-  "frontend/src/components/valentine/MovieTicketScene.tsx": "Floating movie ticket scene with bouncing animation, click-to-catch interaction, and enlarged reveal with event details in bright playful Valentine's theme.",
-  "frontend/src/components/valentine/ScratchFrameScene.tsx": "Gold-framed scratch-off scene with canvas-based drag-to-reveal interaction in bright playful Valentine's theme with locked state until previous section completes.",
-  "frontend/src/components/valentine/LoadingOverlay.tsx": "Loading screen with progress bar styled in bright playful Valentine's theme shown while assets preload.",
+  "frontend/src/components/valentine/OpeningMailboxScene.tsx": "Interactive mailbox scene with click-to-reveal envelope and letter in bright playful Valentine's theme, featuring handwritten script font for the letter body text with improved readability on white background and black text for all prompts.",
+  "frontend/src/components/valentine/MovieTicketScene.tsx": "Floating movie ticket scene with bouncing animation, click-to-catch interaction, and enlarged reveal with event details (date, movie, time) in bright playful Valentine's theme with black text for improved readability.",
+  "frontend/src/components/valentine/ScratchFrameScene.tsx": "Gold-framed scratch-off scene with canvas-based drag-to-reveal interaction displaying the updated comic-style couple illustration, featuring black text for instructions and completion messages with locked state until previous section completes.",
+  "frontend/src/components/valentine/LoadingOverlay.tsx": "Loading screen with progress bar styled in bright playful Valentine's theme shown while assets preload, featuring black text for better contrast and readability.",
   "frontend/src/components/valentine/LetterContent.ts": "Centralized exact letter message text with preserved formatting, line breaks, and emojis.",
   "frontend/src/components/valentine/assets.ts": "Centralized asset path constants for all generated images, textures, and audio files.",
   "frontend/src/hooks/useAmbientAudio.ts": "Hook managing ambient romantic instrumental audio lifecycle with browser-compliant playback starting on first user interaction.",

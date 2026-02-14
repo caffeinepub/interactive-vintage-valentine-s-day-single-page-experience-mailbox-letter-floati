@@ -1,12 +1,10 @@
 # Specification
 
 ## Summary
-**Goal:** Fix broken scrolling/progression, make the Valentine letter readable on all devices, and shift the experience’s visual style from moody/vintage to fun and playful.
+**Goal:** Fix the Valentine letter scene to use a handwritten-style font and update the scratch-off revealed couple illustration to match the provided couple description.
 
 **Planned changes:**
-- Fix single-page scroll behavior so users can always move through mailbox/letter → movie ticket → scratch frame on desktop and mobile, before and after interactions complete.
-- Improve the letter’s layout, sizing, and contrast to ensure the full message is comfortably readable across viewports while preserving the exact `LETTER_CONTENT` text (including line breaks and emojis).
-- Update global and scene styles to remove heavy vintage cues and apply a bright, fun/playful Valentine theme consistently across all scenes.
-- Make the “Scroll to continue” UX reliable (and only shown when progression is actually possible), with dependable progression after completing the letter and ticket steps.
+- Update the scratch-off revealed image to use the local static asset path for `couple-illustration.dim_1400x1000.png` via `frontend/src/components/valentine/assets.ts`, ensuring the displayed revealed image matches the specified couple details and the scratch interaction remains functional.
+- Change the letter body text styling to a clearly handwritten/script-style font while keeping the letter content string exactly unchanged in `frontend/src/components/valentine/LetterContent.ts`.
 
-**User-visible outcome:** Users can scroll smoothly through the entire Valentine experience on any device, read the full letter clearly, and enjoy a consistently fun/playful Valentine look and feel with reliable prompts to continue.
+**User-visible outcome:** Opening the letter shows the same message in a handwritten-style font, and scratching off the frame reveals an updated couple illustration that matches the described Punjabi couple, without breaking layout or scratch functionality on desktop or mobile.

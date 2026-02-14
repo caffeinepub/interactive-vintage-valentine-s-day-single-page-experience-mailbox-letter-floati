@@ -1,134 +1,47 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Valentine single-page scroll reliability, letter readability, and playful theme refresh",
+  "title": "Valentine scene fixes: updated couple reveal illustration + handwritten letter font",
   "requirements": [
     {
-      "id": "REQ-7",
-      "summary": "Make the single-page Valentine experience reliably scrollable end-to-end on desktop and mobile across mailbox/letter → ticket → scratch frame without stuck states.",
+      "id": "REQ-16",
+      "summary": "Replace the scratch-off revealed couple illustration with the updated static asset and ensure ScratchFrameScene sources it from the local generated asset via assets.ts while keeping scratch interaction intact.",
       "acceptanceCriteria": [
-        "On a fresh load, the page is scrollable (user can scroll down/up with mouse wheel, trackpad, touch swipe).",
-        "After opening the envelope and revealing the letter, the user can scroll past the mailbox/letter section to reach the movie ticket section.",
-        "After completing the ticket interaction, the user can scroll to the scratch frame section.",
-        "No scene transition relies on impossible scroll conditions (e.g., hidden/removed sections causing no scroll height).",
-        "The experience remains reliably repeatable after browser refresh (no stuck state where scrolling is disabled or progression cannot occur)."
+        "The revealed image shown in the scratch-off frame is sourced from frontend/public/assets/generated/couple-illustration.dim_1400x1000.png (via frontend/src/components/valentine/assets.ts) and visibly differs from the previous incorrect image.",
+        "The revealed image matches all specified character details: skin tone, outfits (dark blue sweater, red dastaar; red off-shoulder top), hair/eyes (long black hair no bangs; brown eyes), expressions (her teeth showing; his teeth not showing), pose (selfie on sofa; he holding her).",
+        "The scratch-off interaction remains functional on desktop (mouse) and mobile (touch), and revealing the image does not break layout or cause runtime errors."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/App.tsx",
+          "path": "frontend/public/assets/generated/couple-illustration.dim_1400x1000.png",
           "operation": "modify",
-          "description": "Refactor the experience to use true document flow (three stacked full-viewport sections) instead of conditional mounting + scroll-threshold transitions; keep all sections in the DOM to guarantee scroll height while gating interactions/progression via props/state, and use section refs to support smooth scrolling to the next scene when a step completes."
+          "description": "Replace the existing revealed couple illustration with the newly generated comic-like selfie-on-sofa couple image matching the provided Punjabi couple description; keep the exact same filename so it continues to be served as a static asset."
         },
         {
-          "path": "frontend/src/components/valentine/OpeningMailboxScene.tsx",
+          "path": "frontend/src/components/valentine/assets.ts",
           "operation": "modify",
-          "description": "Adjust the scene container to behave as a normal scroll section (no pointer-events blocking that can interfere with scrolling), remove/replace scroll listeners that depend on rect.bottom thresholds, and accept a \"scrollToNext\" callback/prop from App for deterministic progression without relying on fragile scroll conditions."
-        },
-        {
-          "path": "frontend/src/components/valentine/MovieTicketScene.tsx",
-          "operation": "modify",
-          "description": "Align the ticket scene with the new stacked-scroll layout: keep it mounted as a full-viewport section, gate interaction until unlocked, and replace rect-based scroll transition logic with a deterministic \"scrollToNext\" callback from App after completion."
+          "description": "Confirm/retain ASSETS.coupleIllustration pointing to the static generated asset path for the revealed image (frontend/public/assets/generated/couple-illustration.dim_1400x1000.png), ensuring no backend fetching is introduced."
         },
         {
           "path": "frontend/src/components/valentine/ScratchFrameScene.tsx",
           "operation": "modify",
-          "description": "Ensure the scratch scene is always present as the final stacked section and remains reachable via normal scrolling; verify layout does not set any overflow or fixed positioning that could prevent the document from scrolling on mobile."
+          "description": "Ensure the revealed <img> continues to use ASSETS.coupleIllustration (from frontend/src/components/valentine/assets.ts) and that the scratch overlay/canvas layering and touch/mouse behavior remain unchanged to preserve scratch-off interaction and layout stability."
         }
       ]
     },
     {
-      "id": "REQ-8",
-      "summary": "Improve letter layout, sizing, and contrast so the exact LETTER_CONTENT is fully readable across devices without clipping or blending into the background.",
+      "id": "REQ-17",
+      "summary": "Switch the opened letter body typography to a handwritten/script font while keeping the exact letter content string unchanged and maintaining readability/scrolling.",
       "acceptanceCriteria": [
-        "The entire letter content is readable without text blending into the background (sufficient contrast).",
-        "On common mobile viewports (e.g., ~390x844), the letter text is not clipped and can be read comfortably (no overlapping layers hiding text).",
-        "If the letter area uses an internal scroll, it must be obvious and usable; otherwise, the main page scroll must allow reading the full content.",
-        "The rendered message matches LETTER_CONTENT exactly (no edits to spelling/punctuation/line breaks/emojis)."
+        "When the letter is opened, the letter body text is rendered in a clearly handwritten/script style font (e.g., the existing script font utility), not the current font-playful styling.",
+        "The letter content text is unchanged from frontend/src/components/valentine/LetterContent.ts (same spelling, punctuation, line breaks, and emojis).",
+        "The letter remains readable across common mobile and desktop widths (no clipped text; scroll within the letter container still works)."
       ],
       "file_operations": [
         {
           "path": "frontend/src/components/valentine/OpeningMailboxScene.tsx",
           "operation": "modify",
-          "description": "Rework the revealed letter layout to avoid absolute-position overlays that can clip on small viewports: render the letter as a responsive card/panel with clear padding, improved type scale/line-height, and a high-contrast text layer; ensure LETTER_CONTENT is rendered via whitespace-preserving rendering and is never modified."
-        },
-        {
-          "path": "frontend/src/index.css",
-          "operation": "modify",
-          "description": "Update global typography defaults and add/adjust utility classes to support readable letter presentation on mobile (comfortable base font size, line-height, and improved text color contrast), without changing LETTER_CONTENT."
-        }
-      ]
-    },
-    {
-      "id": "REQ-9",
-      "summary": "Shift visuals from moody vintage to bright fun/playful Valentine’s style across mailbox, ticket, and scratch scenes via global and scene-level styling updates.",
-      "acceptanceCriteria": [
-        "The primary look and feel is bright/fun/playful Valentine’s (not moody/vintage): lighter palette, clearer typography, and upbeat visual energy.",
-        "Vintage-specific styling cues are minimized/removed where they dominate (e.g., dark vignette overlays, old-paper heaviness, candle-flicker mood), while keeping the same interactive structure and steps.",
-        "All scenes share a consistent fun/playful theme (no mix of playful + heavy vintage elements).",
-        "No user-facing text added for this change uses non-English wording."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/index.css",
-          "operation": "modify",
-          "description": "Replace the vintage token values and related utilities with a playful Valentine palette (lighter backgrounds, pink/red accents) and update/retire heavy vintage effects (vignette/candle-flicker emphasis) in favor of upbeat, subtle, consistent animations."
-        },
-        {
-          "path": "frontend/tailwind.config.js",
-          "operation": "modify",
-          "description": "Update Tailwind theme extensions (colors/fonts/animations) to match the new playful Valentine direction and support consistent styling across scenes without relying on moody/vintage visual cues."
-        },
-        {
-          "path": "frontend/src/components/valentine/OpeningMailboxScene.tsx",
-          "operation": "modify",
-          "description": "Update the mailbox/envelope/letter scene styling to the playful Valentine theme by removing dark vignette/candle overlays and applying brighter background treatments, clearer typography, and consistent playful accents while keeping the same interaction steps."
-        },
-        {
-          "path": "frontend/src/components/valentine/MovieTicketScene.tsx",
-          "operation": "modify",
-          "description": "Update the ticket scene styling to match the playful Valentine theme (lighter backgrounds, upbeat accents, improved readability of ticket text) and remove vintage-dominant overlays/effects."
-        },
-        {
-          "path": "frontend/src/components/valentine/ScratchFrameScene.tsx",
-          "operation": "modify",
-          "description": "Update the scratch frame scene styling to match the playful Valentine theme (background treatment, hint/completion text styling, contrast) and remove vintage-dominant overlays/effects."
-        },
-        {
-          "path": "frontend/src/components/valentine/LoadingOverlay.tsx",
-          "operation": "modify",
-          "description": "Refresh the loading overlay styling to match the new fun/playful Valentine palette and typography so the theme feels consistent from initial load through all scenes."
-        }
-      ]
-    },
-    {
-      "id": "REQ-10",
-      "summary": "Make “Scroll to continue” progression reliable by tying prompts to real document flow and/or providing a clear continue affordance that only appears when progression is possible.",
-      "acceptanceCriteria": [
-        "After the letter is revealed, the user receives a reliable prompt/affordance to proceed and can reach the next section without getting stuck.",
-        "After the ticket details are revealed, the user receives a reliable prompt/affordance to proceed and can reach the scratch frame section without getting stuck.",
-        "The “Scroll to continue” indicator does not appear in situations where the next section cannot be reached (e.g., next section not mounted / no scroll space).",
-        "Works with touch scrolling on mobile Safari/Chrome and with wheel/trackpad scrolling on desktop browsers."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/valentine/ContinuePrompt.tsx",
-          "operation": "create",
-          "description": "Create a small reusable continue affordance component (e.g., fixed or sticky prompt with an explicit Continue action) that can be shown/hidden based on progression state and triggers a provided onContinue handler for deterministic navigation to the next section."
-        },
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Wire the continue affordance to actual section refs: after mailbox completion, enable a dependable proceed action that scrolls to the ticket section; after ticket completion, enable a proceed action that scrolls to the scratch section; ensure the prompt is only rendered when the next section exists and is reachable in the stacked layout."
-        },
-        {
-          "path": "frontend/src/components/valentine/OpeningMailboxScene.tsx",
-          "operation": "modify",
-          "description": "Replace the current fixed 'Scroll to continue' indicator behavior with the shared continue affordance and only show it after the letter is revealed and the next section is available; ensure behavior remains reliable on touch devices (no reliance on fragile scroll threshold checks)."
-        },
-        {
-          "path": "frontend/src/components/valentine/MovieTicketScene.tsx",
-          "operation": "modify",
-          "description": "Replace the current fixed 'Scroll to continue' indicator behavior with the shared continue affordance and only show it after ticket details are revealed and the scratch section is available; ensure it works with both wheel/trackpad and touch scrolling."
+          "description": "Update the letter body text container styling to use the existing handwritten/script font utility (e.g., switch from font-playful to font-script) while rendering the same LETTER_CONTENT string and preserving the existing scrollable letter container behavior (max height + overflow)."
         }
       ]
     }

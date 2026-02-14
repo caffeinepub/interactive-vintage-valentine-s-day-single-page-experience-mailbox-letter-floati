@@ -1,99 +1,60 @@
 {
   "kind": "build_request",
-  "title": "Fix broken scrolling and letter readability; shift Valentine experience from vintage to fun/playful",
+  "title": "Fix letter handwritten font and update scratch-off couple illustration to match provided description",
   "priority": "high",
   "requirements": [
     {
-      "id": "REQ-7",
-      "text": "Fix page scrolling and progression so the user can always scroll through the single-page experience (mailbox/letter → movie ticket → scratch frame) on desktop and mobile, without getting stuck before or after the letter is revealed.",
+      "id": "REQ-16",
+      "text": "Update the scratch-off section to display an updated revealed couple illustration that matches the user-provided couple description (Punjabi, lighter/light-brown skin tones, mid-20s; sitting on a sofa; selfie pose; she has long black hair with no bangs, brown eyes, red off-shoulder full sleeve top, smiling with teeth; he has a shorter/small beard, dark blue sweater, red Sikh turban/dastaar, smiling without showing teeth; he is holding her in his arms). Ensure the ScratchFrameScene uses the updated local static asset path for the revealed image.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-4"
+          "recent-messages-3"
         ],
         "quotes": [
-          "again im not able to scroll ... AND I CANT SCROLL AFTERWAARDS"
+          "again, you didnt even change the last picture and didnt match the description i told you..."
         ]
       },
       "acceptanceCriteria": [
-        "On a fresh load, the page is scrollable (user can scroll down/up with mouse wheel, trackpad, touch swipe).",
-        "After opening the envelope and revealing the letter, the user can scroll past the mailbox/letter section to reach the movie ticket section.",
-        "After completing the ticket interaction, the user can scroll to the scratch frame section.",
-        "No scene transition relies on impossible scroll conditions (e.g., hidden/removed sections causing no scroll height).",
-        "The experience remains reliably repeatable after browser refresh (no stuck state where scrolling is disabled or progression cannot occur)."
+        "The revealed image shown in the scratch-off frame is sourced from frontend/public/assets/generated/couple-illustration.dim_1400x1000.png (via frontend/src/components/valentine/assets.ts) and visibly differs from the previous incorrect image.",
+        "The revealed image matches all specified character details: skin tone, outfits (dark blue sweater, red dastaar; red off-shoulder top), hair/eyes (long black hair no bangs; brown eyes), expressions (her teeth showing; his teeth not showing), pose (selfie on sofa; he holding her).",
+        "The scratch-off interaction remains functional on desktop (mouse) and mobile (touch), and revealing the image does not break layout or cause runtime errors."
       ]
     },
     {
-      "id": "REQ-8",
-      "text": "Make the letter fully readable across devices by improving layout, sizing, and contrast while preserving the exact letter text (including line breaks and emojis) from frontend/src/components/valentine/LetterContent.ts.",
+      "id": "REQ-17",
+      "text": "Change the letter text styling in the opening mailbox/letter section to use a handwritten-style font (not the current playful sans font) while preserving the exact letter content string (including line breaks and emojis) from frontend/src/components/valentine/LetterContent.ts.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-4"
+          "recent-messages-3"
         ],
         "quotes": [
-          "I CANT EVE NREAD MY LETTER!!!!!"
+          "...also didnt change the font in the letter"
         ]
       },
       "acceptanceCriteria": [
-        "The entire letter content is readable without text blending into the background (sufficient contrast).",
-        "On common mobile viewports (e.g., ~390x844), the letter text is not clipped and can be read comfortably (no overlapping layers hiding text).",
-        "If the letter area uses an internal scroll, it must be obvious and usable; otherwise, the main page scroll must allow reading the full content.",
-        "The rendered message matches LETTER_CONTENT exactly (no edits to spelling/punctuation/line breaks/emojis)."
-      ]
-    },
-    {
-      "id": "REQ-9",
-      "text": "Change the overall visual vibe from moody vintage to fun/playful Valentine’s style across all scenes (mailbox, ticket, scratch frame) by updating global styles (colors/typography/background treatments/animations) and scene styling to remove the heavy vintage look.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-4"
-        ],
-        "quotes": [
-          "I HATE THE VIBE MAKE IT FUN NOT VINTAGE."
-        ]
-      },
-      "acceptanceCriteria": [
-        "The primary look and feel is bright/fun/playful Valentine’s (not moody/vintage): lighter palette, clearer typography, and upbeat visual energy.",
-        "Vintage-specific styling cues are minimized/removed where they dominate (e.g., dark vignette overlays, old-paper heaviness, candle-flicker mood), while keeping the same interactive structure and steps.",
-        "All scenes share a consistent fun/playful theme (no mix of playful + heavy vintage elements).",
-        "No user-facing text added for this change uses non-English wording."
-      ]
-    },
-    {
-      "id": "REQ-10",
-      "text": "Update the “Scroll to continue” UX so it works reliably: once a section is completed, provide a dependable way to proceed (scroll detection that works with the actual document flow and/or a clear continue affordance) and ensure the indicator never appears when progression is blocked.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-4"
-        ],
-        "quotes": [
-          "AND I CANT SCROLL AFTERWAARDS"
-        ]
-      },
-      "acceptanceCriteria": [
-        "After the letter is revealed, the user receives a reliable prompt/affordance to proceed and can reach the next section without getting stuck.",
-        "After the ticket details are revealed, the user receives a reliable prompt/affordance to proceed and can reach the scratch frame section without getting stuck.",
-        "The “Scroll to continue” indicator does not appear in situations where the next section cannot be reached (e.g., next section not mounted / no scroll space).",
-        "Works with touch scrolling on mobile Safari/Chrome and with wheel/trackpad scrolling on desktop browsers."
+        "When the letter is opened, the letter body text is rendered in a clearly handwritten/script style font (e.g., the existing script font utility), not the current font-playful styling.",
+        "The letter content text is unchanged from frontend/src/components/valentine/LetterContent.ts (same spelling, punctuation, line breaks, and emojis).",
+        "The letter remains readable across common mobile and desktop widths (no clipped text; scroll within the letter container still works)."
       ]
     }
   ],
   "constraints": [
-    "Do not edit files under frontend/src/components/ui (compose them instead).",
-    "Do not edit immutable hook files: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx.",
-    "Backend remains single-actor (backend/main.mo); do not introduce additional backend services."
+    "Do not edit files under frontend/src/components/ui (read-only).",
+    "Do not edit immutable hook files listed in SYSTEM_CONTEXT.frontend.immutablePaths.",
+    "Do not fetch images through the backend; all Valentine images must be served as static assets from frontend/public/assets/generated and referenced via frontend/src/components/valentine/assets.ts."
   ],
   "nonGoals": [
-    "Do not change the Valentine letter message content in frontend/src/components/valentine/LetterContent.ts.",
-    "Do not add new interactive sections beyond mailbox/letter, movie ticket, and scratch frame.",
-    "Do not introduce third-party authentication providers or external databases/services."
+    "Add new interactive sections or change the existing scene progression structure beyond what is necessary to fix the image and letter font issues.",
+    "Change the wording of the letter message.",
+    "Introduce any backend logic; backend/main.mo should remain unused unless explicitly required later."
   ],
   "imageRequirements": {
     "required": [],
-    "edits": []
+    "edits": [
+      "Update the revealed couple selfie illustration to match the specified couple description in a comic-like style with warm romantic lighting (couple-illustration.dim_1400x1000.png > couple-illustration.dim_1400x1000.png)"
+    ]
   },
   "userProfileUpdate": {
     "goalsToAdd": [],

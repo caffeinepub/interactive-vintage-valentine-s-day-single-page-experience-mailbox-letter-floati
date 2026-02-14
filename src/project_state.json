@@ -1,19 +1,28 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 5,
+  "projectStateVersion": 11,
   "summary": "Shift the experience direction from moody vintage to a fun, more playful Valentine’s Day single-page interactive experience while fixing major usability blockers (scroll not working; letter not readable; inability to scroll after letter).",
   "architectural_notes": [
     "Single-page interactive, section-by-section narrative flow gated by user interactions (click/scroll/drag) to ensure no passive sections.",
     "Do not hard-lock scrolling via CSS/JS; if progression gating is needed, implement via section overlays/prompts without disabling page scroll.",
-    "Ensure letter content is readable: adequate contrast, font size/line-height, and responsive layout so message can be read on mobile and desktop."
+    "Ensure letter content is readable: adequate contrast, font size/line-height, and responsive layout so message can be read on mobile and desktop.",
+    "Ensure all text overlays (especially ticket details) meet accessible contrast/readability across devices (dark enough text on light backgrounds; avoid low-contrast styling).",
+    "Use black (or similarly high-contrast dark) font color instead of pink for readability on relevant UI text across sections."
   ],
   "known_issues": [
     "User reports prior build 'didn't work' and requests it 'works this time' (potential regression/robustness issue to address).",
     "Critical: user cannot scroll (initially and/or after letter section), blocking progression.",
     "Critical: letter content is not readable (layout/contrast/font sizing issue suspected).",
-    "User rejects current 'vintage' vibe; requested a fun/playful vibe instead."
+    "User rejects current 'vintage' vibe; requested a fun/playful vibe instead.",
+    "Ticket section text is barely readable due to low-contrast font color (needs darker text).",
+    "Ticket currently includes unwanted line “Front row seats to forever with you.” (remove).",
+    "Revealed scratch-off selfie illustration does not match the requested couple appearance/style (needs updated comic-like Punjabi mid-20s selfie matching specified details).",
+    "Scratch-off section revealed couple illustration still does not match the specified couple details / comic-like Punjabi mid-20s selfie; user confirms everything else is good but this image must be replaced.",
+    "Some UI text is still using pink font color; user requests changing it to black for readability.",
+    "Scratch-off revealed couple illustration was not updated in the latest draft (still does not match the specified couple description)."
   ],
   "isFixRequest": true,
+  "imageRequirements": "## Edit Images\n- Update the revealed couple selfie illustration to match the specified couple description in a comic-like style with warm romantic lighting (couple-illustration.dim_1400x1000.png > couple-illustration.dim_1400x1000.png)",
   "existing_features": [
     {
       "id": "feature-create-a-single-page-fully-interactive-valentine-s-day-experience-with-a-consistent-moody-vintage-romantic-aesthetic-warm-golden-tones-soft-shadows-old-paper-textures-subtle-flickering-candlelight-animations-and-slow-emotional-transitions-the-overall-vibe-must-also-feel-fun-cute-and-aesthetic-while-staying-vintage",
@@ -94,6 +103,62 @@
         "REQ-10"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-remove-the-quote-line-front-row-seats-to-forever-with-you-from-the-revealed-caught-state-of-the-movie-ticket-section-so-it-no-longer-appears-anywhere-in-the-ticket-reveal-content",
+      "title": "Remove the quote line \"Front row seats to forever with you.\" from the revealed/caught state of the movie ticket section so it no longer appears anywhere in the ticket reveal content.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-improve-readability-of-the-movie-ticket-revealed-text-by-changing-its-typography-colors-to-a-darker-higher-contrast-palette-against-the-white-ticket-background-including-headings-and-details-while-keeping-the-existing-wording-unchanged",
+      "title": "Improve readability of the movie ticket revealed text by changing its typography colors to a darker, higher-contrast palette against the white ticket background (including headings and details) while keeping the existing wording unchanged.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-replace-the-scratch-off-revealed-couple-illustration-image-with-an-updated-comic-like-selfie-illustration-that-matches-the-couple-description-punjabi-light-brown-lighter-skin-tones-mid-20s-sitting-on-a-sofa-selfie-pose-she-has-long-black-hair-no-bangs-brown-eyes-red-off-shoulder-full-sleeve-top-smiling-with-teeth-he-has-a-shorter-small-beard-dark-blue-sweater-red-sikh-turban-dastaar-smiling-without-showing-teeth-he-is-holding-her-in-his-arms",
+      "title": "Replace the scratch-off revealed couple illustration image with an updated comic-like selfie illustration that matches the couple description: Punjabi, light brown/lighter skin tones, mid-20s; sitting on a sofa; selfie pose; she has long black hair (no bangs), brown eyes, red off-shoulder full sleeve top, smiling with teeth; he has a shorter/small beard, dark blue sweater, red Sikh turban (dastaar), smiling without showing teeth; he is holding her in his arms.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-replace-the-scratch-off-section-s-revealed-couple-illustration-with-an-updated-comic-style-selfie-that-matches-the-user-s-specified-appearance-details-both-lighter-skin-he-has-a-shorter-beard-he-wears-a-dark-blue-sweater-he-wears-a-red-dastaar-sikh-turban-she-has-long-black-hair-no-bangs-brown-eyes-wearing-a-red-off-shoulder-full-sleeve-top-both-sitting-on-a-sofa-in-a-selfie-pose-she-is-smiling-with-teeth-he-is-smiling-without-showing-teeth-he-is-holding-her-in-his-arms",
+      "title": "Replace the scratch-off section’s revealed couple illustration with an updated comic-style selfie that matches the user’s specified appearance details: both lighter skin; he has a shorter beard; he wears a dark blue sweater; he wears a red dastaar (Sikh turban); she has long black hair (no bangs), brown eyes, wearing a red off-shoulder full sleeve top; both sitting on a sofa in a selfie pose; she is smiling with teeth; he is smiling without showing teeth; he is holding her in his arms.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-change-user-facing-font-color-styling-that-is-currently-pink-to-black-or-near-black-for-readability-across-the-valentine-experience-while-keeping-the-existing-wording-unchanged",
+      "title": "Change user-facing font color styling that is currently pink to black (or near-black) for readability across the Valentine experience, while keeping the existing wording unchanged.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-scratch-off-section-to-display-an-updated-revealed-couple-illustration-that-matches-the-user-provided-couple-description-punjabi-lighter-light-brown-skin-tones-mid-20s-sitting-on-a-sofa-selfie-pose-she-has-long-black-hair-with-no-bangs-brown-eyes-red-off-shoulder-full-sleeve-top-smiling-with-teeth-he-has-a-shorter-small-beard-dark-blue-sweater-red-sikh-turban-dastaar-smiling-without-showing-teeth-he-is-holding-her-in-his-arms-ensure-the-scratchframescene-uses-the-updated-local-static-asset-path-for-the-revealed-image",
+      "title": "Update the scratch-off section to display an updated revealed couple illustration that matches the user-provided couple description (Punjabi, lighter/light-brown skin tones, mid-20s; sitting on a sofa; selfie pose; she has long black hair with no bangs, brown eyes, red off-shoulder full sleeve top, smiling with teeth; he has a shorter/small beard, dark blue sweater, red Sikh turban/dastaar, smiling without showing teeth; he is holding her in his arms). Ensure the ScratchFrameScene uses the updated local static asset path for the revealed image.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-change-the-letter-text-styling-in-the-opening-mailbox-letter-section-to-use-a-handwritten-style-font-not-the-current-playful-sans-font-while-preserving-the-exact-letter-content-string-including-line-breaks-and-emojis-from-frontend-src-components-valentine-lettercontent-ts",
+      "title": "Change the letter text styling in the opening mailbox/letter section to use a handwritten-style font (not the current playful sans font) while preserving the exact letter content string (including line breaks and emojis) from frontend/src/components/valentine/LetterContent.ts.",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -130,6 +195,24 @@
     {
       "id": "AR-6",
       "summary": "Fix critical UX bugs: scrolling not working; letter text not readable; ensure user can scroll/progress after letter reveal across devices/browsers",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Update movie ticket details: remove the line “Front row seats to forever with you.” from the ticket reveal content",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Improve text readability on the ticket (and any other low-contrast UI): change font color to a darker, higher-contrast color so it’s clearly readable",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Replace/update the scratch-off revealed selfie illustration so it matches the couple: Punjabi, light brown/lighter skin, mid-20s; comic-like style; selfie on a sofa; she has long black hair (no bangs), brown eyes, red off-shoulder full sleeve top, smiling with teeth; he has shorter/small beard, dark blue sweater, red Sikh turban (dastaar), smiling without showing teeth; he’s holding her in his arms",
       "reqIds": [],
       "status": "pending"
     }

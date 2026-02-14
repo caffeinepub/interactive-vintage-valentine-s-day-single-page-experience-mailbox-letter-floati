@@ -55,7 +55,7 @@ export function OpeningMailboxScene({ onComplete, onScrollNext, showContinue }: 
               📬
             </div>
           </div>
-          <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 text-fun-red font-playful text-lg animate-pulse">
+          <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 text-gray-900 font-playful text-lg animate-pulse">
             Click me!
           </div>
         </button>
@@ -70,12 +70,12 @@ export function OpeningMailboxScene({ onComplete, onScrollNext, showContinue }: 
           <div className="relative bg-white rounded-2xl shadow-fun p-8 hover:scale-105 transition-transform duration-500">
             <div className="text-center">
               <div className="text-8xl mb-4">💌</div>
-              <p className="text-fun-red font-playful text-3xl md:text-4xl">
+              <p className="text-gray-900 font-playful text-3xl md:text-4xl">
                 To: My Bestie 🤍
               </p>
             </div>
           </div>
-          <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 text-fun-red font-playful text-lg animate-pulse whitespace-nowrap">
+          <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 text-gray-900 font-playful text-lg animate-pulse whitespace-nowrap">
             Click to open!
           </div>
         </div>
@@ -85,7 +85,7 @@ export function OpeningMailboxScene({ onComplete, onScrollNext, showContinue }: 
       {letterOpen && (
         <div className="relative z-30 animate-letter-unfold max-w-[90vw] w-full px-4">
           <div className="bg-white rounded-3xl shadow-fun-xl p-6 md:p-12 max-w-3xl mx-auto max-h-[80vh] overflow-y-auto">
-            <div className="text-fun-text font-playful text-lg md:text-xl leading-relaxed whitespace-pre-wrap">
+            <div className="text-fun-text font-script text-xl md:text-2xl leading-relaxed whitespace-pre-wrap">
               {LETTER_CONTENT}
             </div>
           </div>

@@ -2,14 +2,9 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-fix-page-scrolling-and-progression-so-the-user-can-always-scroll-through-the-single-page-experience-mailbox-letter-movie-ticket-scratch-frame-on-desktop-and-mobile-without-getting-stuck-before-or-after-the-letter-is-revealed",
-      "featureTitle": "Fix page scrolling and progression so the user can always scroll through the single-page experience (mailbox/letter → movie ticket → scratch frame) on desktop and mobile, without getting stuck before or after the letter is revealed.",
-      "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/components/valentine/MovieTicketScene.tsx",
-        "frontend/src/components/valentine/OpeningMailboxScene.tsx",
-        "frontend/src/components/valentine/ScratchFrameScene.tsx"
-      ],
+      "featureId": "feature-update-the-scratch-off-section-to-display-an-updated-revealed-couple-illustration-that-matches-the-user-provided-couple-description-punjabi-lighter-light-brown-skin-tones-mid-20s-sitting-on-a-sofa-selfie-pose-she-has-long-black-hair-with-no-bangs-brown-eyes-red-off-shoulder-full-sleeve-top-smiling-with-teeth-he-has-a-shorter-small-beard-dark-blue-sweater-red-sikh-turban-dastaar-smiling-without-showing-teeth-he-is-holding-her-in-his-arms-ensure-the-scratchframescene-uses-the-updated-local-static-asset-path-for-the-revealed-image",
+      "featureTitle": "Update the scratch-off section to display an updated revealed couple illustration that matches the user-provided couple description (Punjabi, lighter/light-brown skin tones, mid-20s; sitting on a sofa; selfie pose; she has long black hair with no bangs, brown eyes, red off-shoulder full sleeve top, smiling with teeth; he has a shorter/small beard, dark blue sweater, red Sikh turban/dastaar, smiling without showing teeth; he is holding her in his arms). Ensure the ScratchFrameScene uses the updated local static asset path for the revealed image.",
+      "files": [],
       "components": [
         "core-infrastructure@1.0.2",
         "shadcn-ui@1.0.0",
@@ -18,59 +13,14 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-7"
+        "REQ-16"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-make-the-letter-fully-readable-across-devices-by-improving-layout-sizing-and-contrast-while-preserving-the-exact-letter-text-including-line-breaks-and-emojis-from-frontend-src-components-valentine-lettercontent-ts",
-      "featureTitle": "Make the letter fully readable across devices by improving layout, sizing, and contrast while preserving the exact letter text (including line breaks and emojis) from frontend/src/components/valentine/LetterContent.ts.",
+      "featureId": "feature-change-the-letter-text-styling-in-the-opening-mailbox-letter-section-to-use-a-handwritten-style-font-not-the-current-playful-sans-font-while-preserving-the-exact-letter-content-string-including-line-breaks-and-emojis-from-frontend-src-components-valentine-lettercontent-ts",
+      "featureTitle": "Change the letter text styling in the opening mailbox/letter section to use a handwritten-style font (not the current playful sans font) while preserving the exact letter content string (including line breaks and emojis) from frontend/src/components/valentine/LetterContent.ts.",
       "files": [
-        "frontend/src/components/valentine/OpeningMailboxScene.tsx",
-        "frontend/src/index.css"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-8"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-change-the-overall-visual-vibe-from-moody-vintage-to-fun-playful-valentine-s-style-across-all-scenes-mailbox-ticket-scratch-frame-by-updating-global-styles-colors-typography-background-treatments-animations-and-scene-styling-to-remove-the-heavy-vintage-look",
-      "featureTitle": "Change the overall visual vibe from moody vintage to fun/playful Valentine’s style across all scenes (mailbox, ticket, scratch frame) by updating global styles (colors/typography/background treatments/animations) and scene styling to remove the heavy vintage look.",
-      "files": [
-        "frontend/src/components/valentine/LoadingOverlay.tsx",
-        "frontend/src/components/valentine/MovieTicketScene.tsx",
-        "frontend/src/components/valentine/OpeningMailboxScene.tsx",
-        "frontend/src/components/valentine/ScratchFrameScene.tsx",
-        "frontend/src/index.css",
-        "frontend/tailwind.config.js"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-9"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-update-the-scroll-to-continue-ux-so-it-works-reliably-once-a-section-is-completed-provide-a-dependable-way-to-proceed-scroll-detection-that-works-with-the-actual-document-flow-and-or-a-clear-continue-affordance-and-ensure-the-indicator-never-appears-when-progression-is-blocked",
-      "featureTitle": "Update the “Scroll to continue” UX so it works reliably: once a section is completed, provide a dependable way to proceed (scroll detection that works with the actual document flow and/or a clear continue affordance) and ensure the indicator never appears when progression is blocked.",
-      "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/components/valentine/ContinuePrompt.tsx",
-        "frontend/src/components/valentine/MovieTicketScene.tsx",
         "frontend/src/components/valentine/OpeningMailboxScene.tsx"
       ],
       "components": [
@@ -81,7 +31,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-10"
+        "REQ-17"
       ],
       "confidence": "high"
     }

@@ -69,14 +69,14 @@ export function ScratchFrameScene({ isUnlocked }: ScratchFrameSceneProps) {
 
           {/* Instruction hint */}
           {!revealed && (
-            <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 text-fun-red font-playful text-lg animate-pulse text-center">
+            <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 text-gray-900 font-playful text-lg animate-pulse text-center">
               Scratch to reveal! ✨
             </div>
           )}
 
           {/* Completion message */}
           {revealed && (
-            <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 text-fun-red font-playful text-2xl animate-fade-in text-center">
+            <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 text-gray-900 font-playful text-2xl animate-fade-in text-center">
               ❤️ Happy Valentine's Day ❤️
             </div>
           )}
